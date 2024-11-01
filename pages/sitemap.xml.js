@@ -25,6 +25,7 @@ export const getServerSideProps = async ({ res }) => {
   `;
 
   res.setHeader("Content-Type", "text/xml");
+  res.setHeader("X-Robots-Tag", "noindex, nofollow");
   res.write(sitemap);
   res.end();
 
