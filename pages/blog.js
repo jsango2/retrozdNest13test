@@ -10,7 +10,6 @@
 
 import Link from "next/link";
 import { client } from "../lib/sanity/client";
-import { PortableText } from "@portabletext/react";
 import { urlFor } from "../lib/sanity/fetchImg";
 
 import React from "react";
@@ -41,19 +40,16 @@ function Blog({ data }) {
       <BlogSectionTitle>Retro Zadar Blog</BlogSectionTitle>
       <WrapBlogCards>
         {data.map((post) => (
-          <WrapCard key={post._id}>
-            <Link href={`/posts/${post.slug.current}`}>
-              {/* <p>{new Date(post.publishedAt).toLocaleDateString()}</p> */}
-              {/* <PortableText value={post.body} components={components} /> */}
-
+          <Link href={`/posts/${post.slug.current}`} key={post._id}>
+            <WrapCard>
               <img
                 src={urlFor(post.mainImage).width(800).url()}
                 alt={post.mainImage.alt || "Sanity Image"}
                 className="rounded-lg"
               />
               <h2>{post.title}</h2>
-            </Link>
-          </WrapCard>
+            </WrapCard>
+          </Link>
         ))}
       </WrapBlogCards>
     </WrapBlogSection>

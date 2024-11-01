@@ -11,7 +11,7 @@
 import Link from "next/link";
 import { client } from "../../lib/sanity/client";
 import { PortableText } from "@portabletext/react";
-import { getImageDimensions } from "@sanity/asset-utils";
+
 import { urlFor } from "../../lib/sanity/fetchImg";
 import React from "react";
 
