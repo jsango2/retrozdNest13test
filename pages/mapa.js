@@ -1452,38 +1452,8 @@ function Mapa({ data }) {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="icon" href="/favicon.ico" />
-        <meta property="og:type" content="website" />
-        <meta name="robots" content="all" />
+
         <meta name="robots" content="noindex, nofollow" />
-
-        <meta
-          name="description"
-          content="Pogledajte kako je nekad izgledao naš Zadar. Stare fotografije grada Zadra na jedinstvenoj interaktivnoj mapi. Usporedite izgled grada nekad i sad."
-        />
-
-        <meta property="og:url" content="https://www.retrozadar.com/mapa" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Retro Zadar" />
-        <meta
-          property="og:description"
-          content="Pogledajte kako je nekad izgledao naš Zadar. Stare fotografije grada Zadra na jedinstvenoj interaktivnoj mapi. Usporedite izgled grada nekad i sad."
-        />
-        <meta property="og:image" content="https://retrozadar.com/og2.png" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="retrozadar.com" />
-        <meta
-          property="twitter:url"
-          content="https://www.retrozadar.com/mapa"
-        />
-        <meta name="twitter:title" content="Retro Zadar" />
-
-        <meta
-          name="twitter:description"
-          content="Pogledajte kako je nekad izgledao naš Zadar. Stare fotografije grada Zadra na jedinstvenoj interaktivnoj mapi. Usporedite izgled grada nekad i sad."
-        />
-        <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
       </Head>{" "}
       <div
         id="map"
