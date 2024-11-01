@@ -262,6 +262,7 @@ export default function IndexPage() {
       <Head>
         <title>Retro Zadar</title>
         <meta property="og:title" content="Retro Zadar" key="title" />
+        <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://retrozadar.com" key="canonical" />
         <link
           rel="apple-touch-icon"

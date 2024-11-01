@@ -1455,6 +1455,7 @@ function Mapa({ data }) {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:type" content="website" />
         <meta name="robots" content="all" />
+        <meta name="robots" content="noindex, nofollow" />
 
         <meta
           name="description"
