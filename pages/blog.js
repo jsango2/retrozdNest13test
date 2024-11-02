@@ -43,6 +43,22 @@ function Blog({ data }) {
     },
   };
   console.log(data);
+
+  function truncateSentence(text, maxLength = 140) {
+    if (text.length <= maxLength) return text; // Return original if within limit
+
+    // Trim the text to maxLength and look for the last space before the cut
+    let truncated = text.slice(0, maxLength);
+    const lastSpaceIndex = truncated.lastIndexOf(" ");
+
+    // If a space is found, trim to that space; otherwise, use the maxLength
+    if (lastSpaceIndex > -1) {
+      truncated = truncated.slice(0, lastSpaceIndex);
+    }
+
+    return truncated + "...";
+  }
+
   return (
     <>
       <Head>
@@ -128,7 +144,7 @@ function Blog({ data }) {
                     />
                     <Author>Autor: {post.author.name}, Retro Zadar</Author>
                     <h2>{post.title}</h2>
-                    <p>{post.kratkiOpis}</p>
+                    <p>{truncateSentence(post.kratkiOpis)}</p>
                     {/* <WrapTags>
                       {post.tags &&
                         post.tags.map((tag) => <Tag>{tag.title}</Tag>)}
@@ -180,5 +196,6 @@ export async function getStaticProps() {
     props: {
       data,
     },
+    revalidate: 60,
   };
 }

@@ -7,7 +7,7 @@ export const WrapCard = styled.div`
   font-style: normal;
   z-index: 10;
   width: 350px;
-  height: 450px;
+  height: 470px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -159,7 +159,17 @@ export const Author = styled.div`
 `;
 export const AuthorBlog = styled.div`
   position: relative;
-  margin: 10px 20px 7px 0px;
+  margin: 10px 20px 0px 0px;
+  color: black;
+  font-size: 14px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const DateBlog = styled.div`
+  position: relative;
+  margin: 0px 20px 7px 0px;
   color: black;
   font-size: 14px;
   @media only screen and (max-width: 1250px) {
@@ -194,6 +204,7 @@ export const BlogTitle = styled.div`
   position: relative;
   font-family: "Roboto", serif;
   margin-bottom: 0;
+  margin-top: 10px;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {

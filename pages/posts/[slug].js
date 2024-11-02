@@ -17,6 +17,7 @@ import React, { useEffect, useState } from "react";
 
 import {
   AuthorBlog,
+  DateBlog,
   BlogBackground,
   BlogContent,
   BlogTitle,
@@ -30,6 +31,18 @@ function BlogPost({ post }) {
   const [isTouchDevice, setisTouchDevice] = useState(false);
   console.log(post);
   //   console.log(post);
+  const dateStr = post.publishedAt;
+
+  // Convert to a Date object
+  const dateObj = new Date(dateStr);
+
+  // Extract day, month, and year
+  const day = String(dateObj.getUTCDate()).padStart(2, "0");
+  const month = String(dateObj.getUTCMonth() + 1).padStart(2, "0"); // Months are 0-based
+  const year = dateObj.getUTCFullYear();
+
+  // Format as dd/mm/yyyy
+  const formattedDate = `${day}/${month}/${year}`;
   const components = {
     types: {
       image: ({ value }) =>
@@ -53,10 +66,10 @@ function BlogPost({ post }) {
         <h3 className="text-2xl font-bold my-3 H3">{children}</h3>
       ),
       h4: ({ children }) => (
-        <h4 className="text-2xl font-bold my-3 H4">{children}</h4>
+        <h4 className="text-2xl font-bold my-3 mt-8 H4">{children}</h4>
       ),
 
-      normal: ({ children }) => <p className="my-2">{children}</p>,
+      normal: ({ children }) => <p className="my-2 mt-4">{children}</p>,
     },
     marks: {
       link: ({ value, children }) => (
@@ -73,40 +86,43 @@ function BlogPost({ post }) {
   };
 
   useEffect(() => {
-    if ("ontouchstart" in document.documentElement) {
-      setisTouchDevice(true);
-      document
-        .getElementById("activator")
-        .addEventListener("touchmove", (event) => {
-          const divider = document.getElementById("divider");
+    if (post.oldImage) {
+      if ("ontouchstart" in document.documentElement) {
+        setisTouchDevice(true);
+        document
+          .getElementById("activator")
+          .addEventListener("touchmove", (event) => {
+            const divider = document.getElementById("divider");
 
-          if (event.touches) {
-            divider.style.left = event.touches[0].clientX + "px";
-            event.target.previousElementSibling.style.clip =
-              "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
-          } else {
+            if (event.touches) {
+              divider.style.left = event.touches[0].clientX + "px";
+              event.target.previousElementSibling.style.clip =
+                "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
+            } else {
+              divider.style.left = event.offsetX + "px";
+
+              event.target.previousElementSibling.style.clip =
+                "rect(0px, " + event.offsetX + "px,450px,0px)";
+            }
+          });
+      } else {
+        setisTouchDevice(false);
+        document
+          .getElementById("activator")
+          .addEventListener("mousemove", (event) => {
+            const divider = document.getElementById("divider");
             divider.style.left = event.offsetX + "px";
-
+            // if (feature.properties.fotoLayout === "portrait") {
+            //   event.target.previousElementSibling.style.clip =
+            //     "rect(0px, " + event.offsetX + "px,720px,0px)";
+            // } else {
             event.target.previousElementSibling.style.clip =
               "rect(0px, " + event.offsetX + "px,450px,0px)";
-          }
-        });
-    } else {
-      setisTouchDevice(false);
-      document
-        .getElementById("activator")
-        .addEventListener("mousemove", (event) => {
-          const divider = document.getElementById("divider");
-          divider.style.left = event.offsetX + "px";
-          // if (feature.properties.fotoLayout === "portrait") {
-          //   event.target.previousElementSibling.style.clip =
-          //     "rect(0px, " + event.offsetX + "px,720px,0px)";
-          // } else {
-          event.target.previousElementSibling.style.clip =
-            "rect(0px, " + event.offsetX + "px,450px,0px)";
-          // }
-        });
+            // }
+          });
+      }
     }
+
     // if (size.width > 450) {
     //   document
     //     .getElementById("activator")
@@ -140,7 +156,7 @@ function BlogPost({ post }) {
     //     });
     // }
   }, []);
-  console.log({ isTouchDevice });
+
   return (
     <>
       <Head>
@@ -208,7 +224,7 @@ function BlogPost({ post }) {
           {/* <BlogBackground>
           <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
         </BlogBackground> */}
-          <main className="container mx-auto min-h-screen max-w-3xl p-6 pt-11 flex flex-col gap-4 text-black">
+          <main className="container mx-auto min-h-screen max-w-3xl p-6 pt-11 flex flex-col gap-1 text-black">
             <Link href="/blog" className="hover:underline">
               ← Vrati se na postove
             </Link>
@@ -220,25 +236,28 @@ function BlogPost({ post }) {
               <span style={{ fontWeight: "600" }}>Autor:</span>{" "}
               {post.author.name}, Retro Zadar
             </AuthorBlog>
-            <div className="reveal revealAnimation">
-              <img
-                id="imagePopup"
-                className="swipeFinger shrinkSwiper"
-                src="/swiperWhite.svg"
-              ></img>
-              <img
-                src={urlFor(post.oldImage).width(750).url()}
-                alt={post.oldImage.alt || "Sanity Image"}
-                className="img3"
-              />
-              <img
-                src={urlFor(post.newImage).width(750).url()}
-                alt={post.newImage.alt || "Sanity Image"}
-                className="img4"
-              />
-              <div id="activator" className="activator"></div>
-              <div id="divider" className="divider"></div>
-            </div>
+            <DateBlog>{formattedDate}</DateBlog>
+            {post.oldImage && (
+              <div className="reveal revealAnimation">
+                <img
+                  id="imagePopup"
+                  className="swipeFinger shrinkSwiper"
+                  src="/swiperWhite.svg"
+                ></img>
+                <img
+                  src={urlFor(post.oldImage).width(750).url()}
+                  alt={post.oldImage.alt || "Sanity Image"}
+                  className="img3"
+                />
+                <img
+                  src={urlFor(post.newImage).width(750).url()}
+                  alt={post.newImage.alt || "Sanity Image"}
+                  className="img4"
+                />
+                <div id="activator" className="activator"></div>
+                <div id="divider" className="divider"></div>
+              </div>
+            )}
             <BlogContent className="prose">
               {Array.isArray(post.body) && (
                 <PortableText value={post.body} components={components} />
@@ -275,6 +294,7 @@ export async function getStaticProps({ params }) {
   mainImage,
   oldImage,
   newImage,
+  publishedAt,
   "author": author->{
     _id,
     name,
