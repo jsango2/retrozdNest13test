@@ -208,7 +208,7 @@ function BlogPost({ post }) {
           {/* <BlogBackground>
           <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
         </BlogBackground> */}
-          <main className="container mx-auto min-h-screen max-w-3xl p-6 flex flex-col gap-4 text-black">
+          <main className="container mx-auto min-h-screen max-w-3xl p-6 pt-11 flex flex-col gap-4 text-black">
             <Link href="/blog" className="hover:underline">
               ← Vrati se na postove
             </Link>
