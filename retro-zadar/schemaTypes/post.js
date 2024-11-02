@@ -43,11 +43,12 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main image 2',
+      title: 'Main image',
       type: 'image',
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required().error('Main image is required'),
     }),
     defineField({
       name: 'tags',

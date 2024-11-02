@@ -77,12 +77,12 @@ export const WrapBlogSection = styled.div`
 `;
 export const WrapBlogCards = styled.div`
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
   @media only screen and (max-width: 1250px) {
     height: auto;
     padding-bottom: 100px;
@@ -207,7 +207,8 @@ export const BlogTitle = styled.div`
   margin-top: 10px;
   @media only screen and (max-width: 1250px) {
   }
-  @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 450px) {
+    font-size: 22px;
   }
 `;
 export const BlogBackground = styled.div`
