@@ -129,10 +129,10 @@ function Blog({ data }) {
                     <Author>Autor: {post.author.name}, Retro Zadar</Author>
                     <h2>{post.title}</h2>
                     <p>{post.kratkiOpis}</p>
-                    <WrapTags>
+                    {/* <WrapTags>
                       {post.tags &&
                         post.tags.map((tag) => <Tag>{tag.title}</Tag>)}
-                    </WrapTags>
+                    </WrapTags> */}
                   </WrapCard>
                 </Link>
               ))}

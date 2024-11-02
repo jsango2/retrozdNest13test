@@ -15,7 +15,12 @@ import { PortableText } from "@portabletext/react";
 import { urlFor } from "../../lib/sanity/fetchImg";
 import React, { useEffect, useState } from "react";
 
-import { BlogBackground, BlogContent, BlogTitle } from "../../styles/styles";
+import {
+  AuthorBlog,
+  BlogBackground,
+  BlogContent,
+  BlogTitle,
+} from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
@@ -76,20 +81,17 @@ function BlogPost({ post }) {
     if (size.width > 450) {
       document
         .getElementById("activator")
-        .addEventListener(
-          isTouchDevice ? "touchmove" : "mousemove",
-          (event) => {
-            const divider = document.getElementById("divider");
-            divider.style.left = event.offsetX + "px";
-            // if (feature.properties.fotoLayout === "portrait") {
-            //   event.target.previousElementSibling.style.clip =
-            //     "rect(0px, " + event.offsetX + "px,720px,0px)";
-            // } else {
-            event.target.previousElementSibling.style.clip =
-              "rect(0px, " + event.offsetX + "px,450px,0px)";
-            // }
-          }
-        );
+        .addEventListener("mousemove", (event) => {
+          const divider = document.getElementById("divider");
+          divider.style.left = event.offsetX + "px";
+          // if (feature.properties.fotoLayout === "portrait") {
+          //   event.target.previousElementSibling.style.clip =
+          //     "rect(0px, " + event.offsetX + "px,720px,0px)";
+          // } else {
+          event.target.previousElementSibling.style.clip =
+            "rect(0px, " + event.offsetX + "px,450px,0px)";
+          // }
+        });
     } else {
       document
         .getElementById("activator")
@@ -185,6 +187,7 @@ function BlogPost({ post }) {
             <BlogTitle className="text-4xl font-bold mb-8 text-black">
               {post.title}
             </BlogTitle>
+            <AuthorBlog>Autor: {post.author.name}, Retro Zadar</AuthorBlog>
             <div className="reveal revealAnimation">
               <img
                 id="imagePopup"
@@ -231,7 +234,29 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+  const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
+  _id,
+  title,
+  slug,
+  body,
+  kratkiOpis,
+  mainImage,
+  oldImage,
+  newImage,
+  "author": author->{
+    _id,
+    name,
+    image
+  },
+  "category": category->{
+    _id,
+    title
+  },
+  tags[]->{
+    _id,
+    title
+  }
+}`;
   const post = await client.fetch(POST_QUERY, { slug: params.slug });
 
   if (!post) {

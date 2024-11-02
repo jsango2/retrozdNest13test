@@ -7,7 +7,7 @@ export const WrapCard = styled.div`
   font-style: normal;
   z-index: 10;
   width: 350px;
-  height: 500px;
+  height: 470px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -29,6 +29,7 @@ export const WrapCard = styled.div`
     margin: 0px 20px 15px 20px;
     color: black;
     font-weight: 700;
+    font-size: 20px;
   }
   p {
     margin: 0 20px;
@@ -151,6 +152,16 @@ export const Author = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
+export const AuthorBlog = styled.div`
+  position: relative;
+  margin: 10px 20px 7px 0px;
+  color: black;
+  font-size: 14px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
 export const Text = styled.div`
   position: relative;
 
@@ -177,7 +188,7 @@ export const BlogContent = styled.div`
 export const BlogTitle = styled.div`
   position: relative;
   font-family: "Roboto", serif;
-
+  margin-bottom: 0;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
