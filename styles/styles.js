@@ -77,7 +77,12 @@ export const WrapBlogSection = styled.div`
 `;
 export const WrapBlogCards = styled.div`
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   @media only screen and (max-width: 1250px) {
     height: auto;
     padding-bottom: 100px;

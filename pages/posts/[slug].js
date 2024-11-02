@@ -75,24 +75,6 @@ function BlogPost({ post }) {
   useEffect(() => {
     if ("ontouchstart" in document.documentElement) {
       setisTouchDevice(true);
-    } else {
-      setisTouchDevice(false);
-    }
-    if (size.width > 450) {
-      document
-        .getElementById("activator")
-        .addEventListener("mousemove", (event) => {
-          const divider = document.getElementById("divider");
-          divider.style.left = event.offsetX + "px";
-          // if (feature.properties.fotoLayout === "portrait") {
-          //   event.target.previousElementSibling.style.clip =
-          //     "rect(0px, " + event.offsetX + "px,720px,0px)";
-          // } else {
-          event.target.previousElementSibling.style.clip =
-            "rect(0px, " + event.offsetX + "px,450px,0px)";
-          // }
-        });
-    } else {
       document
         .getElementById("activator")
         .addEventListener("touchmove", (event) => {
@@ -109,7 +91,54 @@ function BlogPost({ post }) {
               "rect(0px, " + event.offsetX + "px,450px,0px)";
           }
         });
+    } else {
+      setisTouchDevice(false);
+      document
+        .getElementById("activator")
+        .addEventListener("mousemove", (event) => {
+          const divider = document.getElementById("divider");
+          divider.style.left = event.offsetX + "px";
+          // if (feature.properties.fotoLayout === "portrait") {
+          //   event.target.previousElementSibling.style.clip =
+          //     "rect(0px, " + event.offsetX + "px,720px,0px)";
+          // } else {
+          event.target.previousElementSibling.style.clip =
+            "rect(0px, " + event.offsetX + "px,450px,0px)";
+          // }
+        });
     }
+    // if (size.width > 450) {
+    //   document
+    //     .getElementById("activator")
+    //     .addEventListener("mousemove", (event) => {
+    //       const divider = document.getElementById("divider");
+    //       divider.style.left = event.offsetX + "px";
+    //       // if (feature.properties.fotoLayout === "portrait") {
+    //       //   event.target.previousElementSibling.style.clip =
+    //       //     "rect(0px, " + event.offsetX + "px,720px,0px)";
+    //       // } else {
+    //       event.target.previousElementSibling.style.clip =
+    //         "rect(0px, " + event.offsetX + "px,450px,0px)";
+    //       // }
+    //     });
+    // } else {
+    //   document
+    //     .getElementById("activator")
+    //     .addEventListener("touchmove", (event) => {
+    //       const divider = document.getElementById("divider");
+
+    //       if (event.touches) {
+    //         divider.style.left = event.touches[0].clientX + "px";
+    //         event.target.previousElementSibling.style.clip =
+    //           "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
+    //       } else {
+    //         divider.style.left = event.offsetX + "px";
+
+    //         event.target.previousElementSibling.style.clip =
+    //           "rect(0px, " + event.offsetX + "px,450px,0px)";
+    //       }
+    //     });
+    // }
   }, []);
   console.log({ isTouchDevice });
   return (
