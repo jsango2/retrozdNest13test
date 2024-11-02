@@ -35,7 +35,7 @@ const WrapText = styled.div`
   align-items: flex-start;
   flex-direction: column;
   @media screen and (max-width: 720px) {
-    width: 90%;
+    width: 87%;
     height: auto;
     margin-left: 30px;
   }
@@ -203,7 +203,7 @@ const Insta = styled.div`
 const Mapa = styled.div`
   position: relative;
   margin-top: 30px;
-  width: 203px;
+  width: auto;
   height: 56px;
   flex-shrink: 0;
   border: 3px solid #bda593;
@@ -213,7 +213,7 @@ const Mapa = styled.div`
   font-weight: 700;
   z-index: 2;
   font-size: 16px;
-
+  padding: 0 30px;
   color: #3f230f;
   display: flex;
   justify-content: center;
@@ -223,8 +223,23 @@ const Mapa = styled.div`
     transform: translateY(1px);
     box-shadow: 0 0 rgba(0, 0, 0, 0);
   }
+  margin-right: 10px;
   @media screen and (max-width: 850px) {
     font-size: 14px;
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 0;
+  }
+  @media screen and (max-width: 430px) {
+  }
+`;
+const WrapLinks = styled.div`
+  position: relative;
+  display: flex;
+  margin-top: 30px;
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+    width: 100%;
   }
 `;
 const Text = styled.h1`
@@ -344,9 +359,14 @@ export default function IndexPage() {
             Jer “tko kaže da ovog grada nesta ispod neba, staro mu kamenje samo
             zazvati treba na stara mjesta, i bit će grad”!
           </Text>
-          <Link href="/mapa">
-            <Mapa>OTKRIJTE ZADAR</Mapa>
-          </Link>
+          <WrapLinks>
+            <Link href="/mapa">
+              <Mapa>OTKRIJTE ZADAR NA MAPI</Mapa>
+            </Link>
+            <Link href="/blog">
+              <Mapa>BLOG</Mapa>
+            </Link>
+          </WrapLinks>
         </WrapText>
         <div>
           <Insta>

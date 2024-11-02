@@ -26,12 +26,34 @@ export default defineType({
       to: {type: 'author'},
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'oldImage',
+      title: 'Stara fotografija za overlay prikaz',
       type: 'image',
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'newImage',
+      title: 'Nova fotografija za overlay prikaz',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'mainImage',
+      title: 'Main image 2',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'tags',
+      type: 'array',
+      title: 'Tags',
+      of: [{type: 'reference', to: {type: 'tag'}}],
     }),
     defineField({
       name: 'categories',
@@ -48,6 +70,12 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'kratkiOpis',
+      title: 'Kratki opis',
+      type: 'text',
+      validation: (Rule) => Rule.max(170).warning('Maksimalni broj znakova je 170'),
     }),
   ],
 

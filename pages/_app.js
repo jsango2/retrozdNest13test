@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }) {
 
   return (
     <div className="app-wrap">
-      <LazyMotion features={domAnimation}>
+      {/* <LazyMotion features={domAnimation}>
         <AnimatePresence exitBeforeEnter={!exitBefore}>
           <m.div
             key={router.route.concat(animation.name)}
@@ -38,12 +38,12 @@ function MyApp({ Component, pageProps, router }) {
             exit="exit"
             variants={animation.variants}
             transition={animation.transition}
-          >
-            <Component {...pageProps} />
-            <GoogleTagManager gtmId={`G-4640T6WR87`} />
-          </m.div>
+          > */}
+      <Component {...pageProps} />
+      <GoogleTagManager gtmId={`G-4640T6WR87`} />
+      {/* </m.div>
         </AnimatePresence>
-      </LazyMotion>
+      </LazyMotion> */}
     </div>
   );
 }

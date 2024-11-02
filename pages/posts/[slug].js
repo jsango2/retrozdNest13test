@@ -13,9 +13,15 @@ import { client } from "../../lib/sanity/client";
 import { PortableText } from "@portabletext/react";
 
 import { urlFor } from "../../lib/sanity/fetchImg";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import { BlogBackground, BlogContent, BlogTitle } from "../../styles/styles";
+import Layout from "../../components/layout/layout";
+import Image from "next/image";
+import Head from "next/head";
 function BlogPost({ post }) {
+  const [isTouchDevice, setisTouchDevice] = useState(false);
+  console.log(post);
   //   console.log(post);
   const components = {
     types: {
@@ -31,11 +37,18 @@ function BlogPost({ post }) {
     },
     block: {
       h1: ({ children }) => (
-        <h1 className="text-3xl font-bold my-4">{children}</h1>
+        <h1 className="text-3xl font-bold my-4 H1">{children}</h1>
       ),
       h2: ({ children }) => (
-        <h2 className="text-2xl font-bold my-3">{children}</h2>
+        <h2 className="text-2xl font-bold my-3 H2">{children}</h2>
       ),
+      h3: ({ children }) => (
+        <h3 className="text-2xl font-bold my-3 H3">{children}</h3>
+      ),
+      h4: ({ children }) => (
+        <h4 className="text-2xl font-bold my-3 H4">{children}</h4>
+      ),
+
       normal: ({ children }) => <p className="my-2">{children}</p>,
     },
     marks: {
@@ -51,26 +64,125 @@ function BlogPost({ post }) {
       ),
     },
   };
+  useEffect(() => {
+    let touchDevice;
+    if ("ontouchstart" in document.documentElement) {
+      touchDevice = true;
+    } else {
+      touchDevice = false;
+    }
+    // touchDevice ? "touchmove" :
+    document
+      .getElementById("activator")
+      .addEventListener(touchDevice ? "touchmove" : "mousemove", (event) => {
+        console.log(event);
+        const divider = document.getElementById("divider");
+        // console.log(divider);
+        divider.style.left = event.offsetX + "px";
+        event.target.previousElementSibling.style.clip =
+          "rect(0px, " + event.offsetX + "px,450px,0px)";
+      });
+  }, []);
 
   return (
-    // <div>
-    //   Blog Post
-    //   <div></div>
-    // </div>
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>{post.title}</title>
+        <meta property="og:title" content="Retro Zadar Blog " key="title" />
+        <link
+          rel="canonical"
+          href={`https://www.retrozadar.com/posts/${post.slug.current}`}
+          key="canonical"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+        {/* og data: */}
+        <meta property="og:type" content="website" />
+        <meta name="description" content={post.kratkiOpis} />
 
-    <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
-      <Link href="/blog" className="hover:underline">
-        ← Back to posts
-      </Link>
+        <meta
+          property="og:url"
+          content={`https://www.retrozadar.com/posts/${post.slug.current}`}
+        />
+        <meta property="og:type" content="website" />
 
-      <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
-      <div className="prose">
-        {Array.isArray(post.body) && (
-          <PortableText value={post.body} components={components} />
-        )}
-        {/* <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p> */}
-      </div>
-    </main>
+        <meta property="og:description" content={post.kratkiOpis} />
+        <meta
+          name="keywords"
+          content="stare fotografije zadra, nekad, sad, zadar, razglednice"
+        />
+        <meta property="og:image" content="https://retrozadar.com/og2.png" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:domain"
+          content={`https://www.retrozadar.com/posts/${post.slug.current}`}
+        />
+        <meta
+          property="twitter:url"
+          content={`https://www.retrozadar.com/posts/${post.slug.current}`}
+        />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.kratkiOpis} />
+        <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
+      </Head>{" "}
+      <Layout>
+        <div className="blogBackground">
+          {/* <BlogBackground>
+          <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
+        </BlogBackground> */}
+          <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4 text-black">
+            <Link href="/blog" className="hover:underline">
+              ← Vrati se na postove
+            </Link>
+
+            <BlogTitle className="text-4xl font-bold mb-8 text-black">
+              {post.title}
+            </BlogTitle>
+            <div className="reveal revealAnimation">
+              <img
+                src={urlFor(post.oldImage).width(750).url()}
+                alt={post.oldImage.alt || "Sanity Image"}
+                className="img3"
+              />
+              <img
+                src={urlFor(post.newImage).width(750).url()}
+                alt={post.newImage.alt || "Sanity Image"}
+                className="img4"
+              />
+              <div id="activator" className="activator"></div>
+              <div id="divider" className="divider"></div>
+            </div>
+            <BlogContent className="prose">
+              {Array.isArray(post.body) && (
+                <PortableText value={post.body} components={components} />
+              )}
+              {/* <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p> */}
+            </BlogContent>
+          </main>
+        </div>
+      </Layout>
+    </>
   );
 }
 

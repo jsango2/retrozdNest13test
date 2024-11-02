@@ -40,6 +40,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { IoTime } from "react-icons/io5";
 // import { IoBookSharp } from "react-icons/io5";
 import Head from "next/head";
+import Link from "next/link";
 // import Header from "./../components/header";
 // import i18next from "i18next";
 // import SEO from "../components/seo";
@@ -311,6 +312,25 @@ const PodNaslov2 = styled.div`
     left: 10px;
 
     top: 80px;
+    font-size: 12px;
+  }
+`;
+const PodNaslov3 = styled.div`
+  position: fixed;
+  left: 275px;
+  top: 150px;
+  z-index: 2;
+  color: ${(props) => (props.mapStyle ? "#3f230f" : "white")};
+
+  font-size: 18px;
+  font-family: "Garamond";
+  font-style: bold;
+  font-weight: 700;
+  /* text-shadow: 0px 2px 11px #0000006e; */
+  @media screen and (max-width: 850px) {
+    left: 10px;
+
+    top: 100px;
     font-size: 12px;
   }
 `;
@@ -1106,7 +1126,7 @@ function Mapa({ data }) {
                   : "reveal revealAnimation"
               }'   ><img id="imagePopup" class="swipeFinger shrinkSwiper" src="/swiperWhite.svg" ></img>
 
-                       <div class='popupTitle'>
+                       <div class='popupTitle'> 
                           <span style="font-weight: bold">${
                             feature.properties.title_naslov
                           },</span>
@@ -1456,6 +1476,11 @@ function Mapa({ data }) {
         <meta name="robots" content="noindex, nofollow" />
       </Head>{" "}
       <div
+        style={{
+          backgroundImage: "url(/bgWaves.jpg)",
+
+          backgroundRepeat: "repeat",
+        }}
         id="map"
         className={` ${featuresArray.length > 0 ? "map" : ""}`}
       ></div>
@@ -1519,6 +1544,9 @@ function Mapa({ data }) {
       <PodNaslov2 mapStyle={mapStyle}>
         Posljednji update: {lastUpdate}
       </PodNaslov2>
+      <PodNaslov3 mapStyle={mapStyle}>
+        <Link href="/blog">Blog</Link>
+      </PodNaslov3>
       <Latest
         mapStyle={mapStyle}
         onClick={() => setIsLatest(!isLatest)}
