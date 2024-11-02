@@ -55,7 +55,7 @@ export const BlogSectionTitle = styled.div`
   font-weight: 700;
   color: #3f230f;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 0px;
   margin-bottom: 20px;
   @media only screen and (max-width: 1250px) {
   }
