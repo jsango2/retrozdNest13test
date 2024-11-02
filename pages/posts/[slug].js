@@ -20,7 +20,7 @@ import Layout from "../../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
 function BlogPost({ post }) {
-  const [isTouchDevice, setisTouchDevice] = useState(false);
+  const [isTouchDevice, setisTouchDevice] = useState(true);
   console.log(post);
   //   console.log(post);
   const components = {
@@ -65,16 +65,17 @@ function BlogPost({ post }) {
     },
   };
   useEffect(() => {
-    let touchDevice;
     if ("ontouchstart" in document.documentElement) {
-      touchDevice = true;
+      setisTouchDevice(true);
     } else {
-      touchDevice = false;
+      setisTouchDevice(false);
     }
-    // touchDevice ? "touchmove" :
+  }, []);
+
+  useEffect(() => {
     document
       .getElementById("activator")
-      .addEventListener(touchDevice ? "touchmove" : "mousemove", (event) => {
+      .addEventListener(isTouchDevice ? "touchmove" : "mousemove", (event) => {
         console.log(event);
         const divider = document.getElementById("divider");
         // console.log(divider);
