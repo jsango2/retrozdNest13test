@@ -108,7 +108,7 @@ function Blog({ data }) {
         />
         <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
       </Head>{" "}
-      <Layout>
+      <Layout isMap={false}>
         <div className="blogBackground">
           <WrapBlogSection>
             <BlogBackground></BlogBackground>

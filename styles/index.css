@@ -193,7 +193,7 @@ p {
 
 .blogBackground {
   background-color: #f8efe3;
-  padding-top: 140px;
+  padding-top: 100px;
   min-height: 100vh;
 }
 
@@ -1048,7 +1048,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 @media only screen and (max-width: 850px) {
   .blogBackground {
     background-color: #f8efe3;
-    padding-top: 80px;
+    padding-top: 45px;
     height: auto;
   }
   .popupTitle {

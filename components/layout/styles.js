@@ -9,7 +9,8 @@ export const HeaderWrap = styled.div`
 
   @media only screen and (max-width: 1250px) {
   }
-  @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 750px) {
+    height: ${(props) => (props.isMap ? "60px" : "70px")};
   }
 `;
 export const Container = styled.div`
@@ -22,7 +23,7 @@ export const Container = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 750px) {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 `;
 export const WrapLinks = styled.div`
@@ -47,11 +48,14 @@ export const WrapLogo = styled.div`
   color: #3f230f;
   margin: 0;
   cursor: pointer;
+  left: ${(props) => (props.isMap ? "228px" : "")};
+
   /* font-style: bold;
   font-weight: 700; */
   /* text-shadow: 0px 2px 11px #0000006e; */
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 850px) {
     font-size: 24px;
+    left: 0px;
   }
 `;
 export const WrapLink = styled.div`

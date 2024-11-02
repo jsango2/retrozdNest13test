@@ -203,12 +203,12 @@ function BlogPost({ post }) {
         <meta name="twitter:description" content={post.kratkiOpis} />
         <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
       </Head>{" "}
-      <Layout>
+      <Layout isMap={false}>
         <div className="blogBackground">
           {/* <BlogBackground>
           <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
         </BlogBackground> */}
-          <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4 text-black">
+          <main className="container mx-auto min-h-screen max-w-3xl p-6 flex flex-col gap-4 text-black">
             <Link href="/blog" className="hover:underline">
               ← Vrati se na postove
             </Link>
@@ -216,7 +216,10 @@ function BlogPost({ post }) {
             <BlogTitle className="text-4xl font-bold mb-8 text-black">
               {post.title}
             </BlogTitle>
-            <AuthorBlog>Autor: {post.author.name}, Retro Zadar</AuthorBlog>
+            <AuthorBlog>
+              <span style={{ fontWeight: "600" }}>Autor:</span>{" "}
+              {post.author.name}, Retro Zadar
+            </AuthorBlog>
             <div className="reveal revealAnimation">
               <img
                 id="imagePopup"

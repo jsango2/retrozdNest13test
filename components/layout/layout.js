@@ -9,15 +9,15 @@ import { Container, HeaderWrap, WrapLogo, WrapLinks, WrapLink } from "./styles";
 // import Footer from "../footer/footer";
 // import { Helmet } from "react-helmet";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isMap }) => {
   return (
     <>
       {/* <Header siteTitle={`Title`} /> */}
       <div>
-        <HeaderWrap>
+        <HeaderWrap isMap={isMap}>
           <Container>
             <Link href="/">
-              <WrapLogo>RETRO ZADAR</WrapLogo>
+              <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>
             </Link>
             <WrapLinks>
               <Link href="/blog">

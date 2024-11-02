@@ -17,7 +17,7 @@ export const WrapCard = styled.div`
   background-color: #f8f4ee;
   border-radius: 20px;
   overflow: hidden;
-  margin: 10px;
+  margin: 20px 10px;
   -webkit-box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
   -moz-box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
   box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
@@ -62,7 +62,7 @@ export const BlogSectionTitle = styled.div`
   }
   @media only screen and (max-width: 750px) {
     margin-top: 0px;
-    font-size: 30px;
+    font-size: 45px;
   }
 `;
 export const WrapBlogSection = styled.div`
@@ -82,7 +82,7 @@ export const WrapBlogCards = styled.div`
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   @media only screen and (max-width: 1250px) {
     height: auto;
     padding-bottom: 100px;

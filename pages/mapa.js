@@ -41,6 +41,7 @@ import { IoTime } from "react-icons/io5";
 // import { IoBookSharp } from "react-icons/io5";
 import Head from "next/head";
 import Link from "next/link";
+import Layout from "../components/layout/layout";
 // import Header from "./../components/header";
 // import i18next from "i18next";
 // import SEO from "../components/seo";
@@ -236,7 +237,7 @@ export const Latest = styled.div`
 
   @media only screen and (max-width: 600px) {
     left: unset;
-    top: 28px;
+    top: 48px;
     right: 8px;
     width: 90px;
   }
@@ -1475,18 +1476,19 @@ function Mapa({ data }) {
 
         <meta name="robots" content="noindex, nofollow" />
       </Head>{" "}
-      <div
-        style={{
-          backgroundImage: "url(/bgWaves.jpg)",
+      <Layout isMap={true}>
+        <div
+          style={{
+            backgroundImage: "url(/bgWaves.jpg)",
 
-          backgroundRepeat: "repeat",
-        }}
-        id="map"
-        className={` ${featuresArray.length > 0 ? "map" : ""}`}
-      ></div>
-      {/* {popupOn && <Overlay onClick={() => handleClickOutsidePopup()} />} */}
-      <div id="overlay"></div>
-      {/* {!wasVisited && (
+            backgroundRepeat: "repeat",
+          }}
+          id="map"
+          className={` ${featuresArray.length > 0 ? "map" : ""}`}
+        ></div>
+        {/* {popupOn && <Overlay onClick={() => handleClickOutsidePopup()} />} */}
+        <div id="overlay"></div>
+        {/* {!wasVisited && (
         <IntroTitle
           className={` ${
             wasVisited ? "introTitleVisible" : "introTitleInVisible"
@@ -1495,82 +1497,81 @@ function Mapa({ data }) {
           RETRO ZADAR
         </IntroTitle>
       )} */}
-      {deleted && (
-        <WrapLottie>
-          <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
-          <lottie-player
-            src="https://lottie.host/3df28e7d-6695-41a3-99ef-7315d530a9c0/Aiy03FOFVN.json"
-            background="transparent"
-            speed="1"
-            style={{ width: "100px", height: "100px" }}
-            autoplay
-          ></lottie-player>
-        </WrapLottie>
-      )}
-      {isDeleting && (
-        <WrapLottie>
-          <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
-          <lottie-player
-            src="https://lottie.host/950d13f5-5a28-4fd7-a894-a954f1af82f3/ozM0HC2SPx.json"
-            background="transparent"
-            speed="1"
-            style={{ width: "100px", height: "100px" }}
-            autoplay
-          ></lottie-player>
-        </WrapLottie>
-      )}
-      {isModalOpen && (
-        <FormModal
-          toggleModal={toggleModal}
-          lngLat={lngLat}
-          allData={allDataFromDB}
-        />
-      )}
-      {isEditModalOpen && (
-        <EditFormModal
-          toggleModal={toggleEditModal}
-          id={idKliknuteFotke}
-          data={featuresKliknuteFotke}
-          allData={allDataFromDB}
-        />
-      )}
-      <Naslov mapStyle={mapStyle}>
-        RETRO ZADAR <br />
-        {/* <span className="zadarNekad">Kako je Zadar izgledao nekad</span> */}
-      </Naslov>
-      <PodNaslov mapStyle={mapStyle}>
-        {value[0]}-{value[1]}
-      </PodNaslov>
-      <PodNaslov2 mapStyle={mapStyle}>
-        Posljednji update: {lastUpdate}
-      </PodNaslov2>
-      <PodNaslov3 mapStyle={mapStyle}>
-        <Link href="/blog">Blog</Link>
-      </PodNaslov3>
-      <Latest
-        mapStyle={mapStyle}
-        onClick={() => setIsLatest(!isLatest)}
-        checked={isLatest}
-        onMouseEnter={() => setIsLatestHovering(true)}
-        onMouseLeave={() => setIsLatestHovering(false)}
-      >
-        {/* <label for="featured">Zadar nekad i sad</label>
+        {deleted && (
+          <WrapLottie>
+            <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
+            <lottie-player
+              src="https://lottie.host/3df28e7d-6695-41a3-99ef-7315d530a9c0/Aiy03FOFVN.json"
+              background="transparent"
+              speed="1"
+              style={{ width: "100px", height: "100px" }}
+              autoplay
+            ></lottie-player>
+          </WrapLottie>
+        )}
+        {isDeleting && (
+          <WrapLottie>
+            <Script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
+            <lottie-player
+              src="https://lottie.host/950d13f5-5a28-4fd7-a894-a954f1af82f3/ozM0HC2SPx.json"
+              background="transparent"
+              speed="1"
+              style={{ width: "100px", height: "100px" }}
+              autoplay
+            ></lottie-player>
+          </WrapLottie>
+        )}
+        {isModalOpen && (
+          <FormModal
+            toggleModal={toggleModal}
+            lngLat={lngLat}
+            allData={allDataFromDB}
+          />
+        )}
+        {isEditModalOpen && (
+          <EditFormModal
+            toggleModal={toggleEditModal}
+            id={idKliknuteFotke}
+            data={featuresKliknuteFotke}
+            allData={allDataFromDB}
+          />
+        )}
+        {/* <Naslov mapStyle={mapStyle}>
+          RETRO ZADAR <br />
+        </Naslov> */}
+        <PodNaslov mapStyle={mapStyle}>
+          {value[0]}-{value[1]}
+        </PodNaslov>
+        <PodNaslov2 mapStyle={mapStyle}>
+          Posljednji update: {lastUpdate}
+        </PodNaslov2>
+        {/* <PodNaslov3 mapStyle={mapStyle}>
+          <Link href="/blog">Blog</Link>
+        </PodNaslov3> */}
+        <Latest
+          mapStyle={mapStyle}
+          onClick={() => setIsLatest(!isLatest)}
+          checked={isLatest}
+          onMouseEnter={() => setIsLatestHovering(true)}
+          onMouseLeave={() => setIsLatestHovering(false)}
+        >
+          {/* <label for="featured">Zadar nekad i sad</label>
         <input
           type="checkbox"
           id="featured"
           checked={isChecked}
           onChange={handleCheckbox}
         ></input> */}
-        {/* <Image
+          {/* <Image
           src={!isLatest ? "/swiper2.png" : "/swiper2white.png"}
           width={20}
           height={20}
         /> */}
-        {isLatest ? <IoTime /> : <IoTimeOutline />}
-        {/* <GrSplit /> */}
-        Novo
-      </Latest>
-      {/* <FeaturedModal
+          {isLatest ? <IoTime /> : <IoTimeOutline />}
+          {/* <GrSplit /> */}
+          Novo
+        </Latest>
+        {/* <FeaturedModal
         className={` ${
           isFeaturedHovering || isLatestHovering || isMapTogglerHovering
             ? "visibleModal"
@@ -1581,7 +1582,7 @@ function Mapa({ data }) {
         {isLatestHovering ? "Novo na RETRO Zadar" : ""}
         {isMapTogglerHovering ? "Promjeni izgled mape" : ""}
       </FeaturedModal> */}
-      {/* <Featured
+        {/* <Featured
         mapStyle={mapStyle}
         onClick={() => setIsChecked(!isChecked)}
         checked={isChecked}
@@ -1596,51 +1597,55 @@ function Mapa({ data }) {
         />
         Retro
       </Featured> */}
-      <Upute />
-      <div className={`slider ${mapStyle ? "darkSlider" : "lightSlider"}`}>
-        <Sliderx
-          getAriaLabel={() => "Raspon godina"}
-          value={value}
-          onChange={handleChange}
-          getAriaValueText={valuetext}
-          min={1611}
-          max={2010}
-          orientation="vertical"
-          valueLabelDisplay="on"
-        />
-      </div>
-      <div
-        className="mapToggler"
-        onClick={() => setMapStyle(!mapStyle)}
-        onMouseEnter={() => setIsMapTogglerHovering(true)}
-        onMouseLeave={() => setIsMapTogglerHovering(false)}
-      >
-        <BsLayersFill />
-        Mape
-      </div>
-      {logedIn && (
-        <div className="admin" onClick={handleLogOut}>
-          Logout
+        <Upute />
+        <div className={`slider ${mapStyle ? "darkSlider" : "lightSlider"}`}>
+          <Sliderx
+            getAriaLabel={() => "Raspon godina"}
+            value={value}
+            onChange={handleChange}
+            getAriaValueText={valuetext}
+            min={1611}
+            max={2010}
+            orientation="vertical"
+            valueLabelDisplay="on"
+          />
         </div>
-      )}
-      {/* {idKliknuteFotke !== null && (
+        <div
+          className="mapToggler"
+          onClick={() => setMapStyle(!mapStyle)}
+          onMouseEnter={() => setIsMapTogglerHovering(true)}
+          onMouseLeave={() => setIsMapTogglerHovering(false)}
+        >
+          <BsLayersFill />
+          Mape
+        </div>
+        {logedIn && (
+          <div className="admin" onClick={handleLogOut}>
+            Logout
+          </div>
+        )}
+        {/* {idKliknuteFotke !== null && (
         <div className="viseInfo">
           <span class="tooltiptext">O slici</span>
           <IoBookSharp />
         </div>
       )} */}
-      {/* {isDeleting && <div className="deleted">Brišem....</div>}
+        {/* {isDeleting && <div className="deleted">Brišem....</div>}
       {deleted && <div className="deleted">Obrisano - osvježi stranicu</div>} */}
-      {logedIn && idKliknuteFotke !== null && (
-        <>
-          <div className="delete" onClick={() => handleDelete(idKliknuteFotke)}>
-            Obriši
-          </div>
-          <div className="edit" onClick={() => handleEdit(idKliknuteFotke)}>
-            Uredi
-          </div>
-        </>
-      )}
+        {logedIn && idKliknuteFotke !== null && (
+          <>
+            <div
+              className="delete"
+              onClick={() => handleDelete(idKliknuteFotke)}
+            >
+              Obriši
+            </div>
+            <div className="edit" onClick={() => handleEdit(idKliknuteFotke)}>
+              Uredi
+            </div>
+          </>
+        )}
+      </Layout>
       <div className={` ${featuresArray.length > 0 ? "map-overlay2" : ""}`}>
         <div id="feature-listing" className="listing"></div>
       </div>
