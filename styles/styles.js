@@ -7,14 +7,14 @@ export const WrapCard = styled.div`
   font-style: normal;
   z-index: 10;
   width: 350px;
-  height: 470px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0;
-  background-color: white;
+  background-color: #f8f4ee;
   border-radius: 20px;
   overflow: hidden;
   margin: 10px;
@@ -45,7 +45,7 @@ export const WrapCard = styled.div`
     padding-bottom: 100px;
   }
   @media only screen and (max-width: 550px) {
-    padding-bottom: 80px;
+    padding-bottom: 30px;
   }
 `;
 export const BlogSectionTitle = styled.div`
