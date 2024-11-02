@@ -19,8 +19,10 @@ import { BlogBackground, BlogContent, BlogTitle } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
+import useWindowSize from "../../components/helper/usewindowsize";
 function BlogPost({ post }) {
-  const [isTouchDevice, setisTouchDevice] = useState(true);
+  const size = useWindowSize();
+  const [isTouchDevice, setisTouchDevice] = useState(false);
   console.log(post);
   //   console.log(post);
   const components = {
@@ -64,27 +66,53 @@ function BlogPost({ post }) {
       ),
     },
   };
+
   useEffect(() => {
     if ("ontouchstart" in document.documentElement) {
       setisTouchDevice(true);
     } else {
       setisTouchDevice(false);
     }
-  }, []);
+    if (size.width > 450) {
+      document
+        .getElementById("activator")
+        .addEventListener(
+          isTouchDevice ? "touchmove" : "mousemove",
+          (event) => {
+            const divider = document.getElementById("divider");
+            divider.style.left = event.offsetX + "px";
+            // if (feature.properties.fotoLayout === "portrait") {
+            //   event.target.previousElementSibling.style.clip =
+            //     "rect(0px, " + event.offsetX + "px,720px,0px)";
+            // } else {
+            event.target.previousElementSibling.style.clip =
+              "rect(0px, " + event.offsetX + "px,450px,0px)";
+            // }
+          }
+        );
+    } else {
+      document
+        .getElementById("activator")
+        .addEventListener(
+          isTouchDevice ? "touchmove" : "mousemove",
+          (event) => {
+            const divider = document.getElementById("divider");
 
-  useEffect(() => {
-    document
-      .getElementById("activator")
-      .addEventListener(isTouchDevice ? "touchmove" : "mousemove", (event) => {
-        console.log(event);
-        const divider = document.getElementById("divider");
-        // console.log(divider);
-        divider.style.left = event.offsetX + "px";
-        event.target.previousElementSibling.style.clip =
-          "rect(0px, " + event.offsetX + "px,450px,0px)";
-      });
-  }, []);
+            if (event.touches) {
+              divider.style.left = event.touches[0].clientX + "px";
+              event.target.previousElementSibling.style.clip =
+                "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
+            } else {
+              divider.style.left = event.offsetX + "px";
 
+              event.target.previousElementSibling.style.clip =
+                "rect(0px, " + event.offsetX + "px,450px,0px)";
+            }
+          }
+        );
+    }
+  }, []);
+  console.log({ isTouchDevice });
   return (
     <>
       <Head>
