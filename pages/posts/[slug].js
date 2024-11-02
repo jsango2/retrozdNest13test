@@ -93,23 +93,20 @@ function BlogPost({ post }) {
     } else {
       document
         .getElementById("activator")
-        .addEventListener(
-          isTouchDevice ? "touchmove" : "mousemove",
-          (event) => {
-            const divider = document.getElementById("divider");
+        .addEventListener("touchmove", (event) => {
+          const divider = document.getElementById("divider");
 
-            if (event.touches) {
-              divider.style.left = event.touches[0].clientX + "px";
-              event.target.previousElementSibling.style.clip =
-                "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
-            } else {
-              divider.style.left = event.offsetX + "px";
+          if (event.touches) {
+            divider.style.left = event.touches[0].clientX + "px";
+            event.target.previousElementSibling.style.clip =
+              "rect(0px, " + event.touches[0].clientX + "px,450px,0px)";
+          } else {
+            divider.style.left = event.offsetX + "px";
 
-              event.target.previousElementSibling.style.clip =
-                "rect(0px, " + event.offsetX + "px,450px,0px)";
-            }
+            event.target.previousElementSibling.style.clip =
+              "rect(0px, " + event.offsetX + "px,450px,0px)";
           }
-        );
+        });
     }
   }, []);
   console.log({ isTouchDevice });
@@ -189,6 +186,11 @@ function BlogPost({ post }) {
               {post.title}
             </BlogTitle>
             <div className="reveal revealAnimation">
+              <img
+                id="imagePopup"
+                className="swipeFinger shrinkSwiper"
+                src="/swiperWhite.svg"
+              ></img>
               <img
                 src={urlFor(post.oldImage).width(750).url()}
                 alt={post.oldImage.alt || "Sanity Image"}
