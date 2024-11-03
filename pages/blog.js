@@ -90,7 +90,7 @@ function Blog({ data }) {
         <meta property="og:title" content="Retro Zadar" />
         <meta
           property="og:description"
-          content="Otkrijte nostalgičnu stranu grada kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
+          content="Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
         />
         <meta
           name="keywords"
@@ -107,7 +107,7 @@ function Blog({ data }) {
         <meta name="twitter:title" content="Retro Zadar" />
         <meta
           name="twitter:description"
-          content="Otkrijte nostalgičnu stranu grada kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
+          content="Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
         />
         <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
       </Head>{" "}
@@ -117,7 +117,7 @@ function Blog({ data }) {
             <BlogBackground></BlogBackground>
             <BlogSectionTitle>Retro Zadar Blog</BlogSectionTitle>
             <Text>
-              Otkrijte nostalgičnu stranu grada kroz priče, sjećanja i
+              Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i
               zaboravljene kutke koji oživljavaju duh prošlih vremena.
             </Text>
             <WrapBlogCards>

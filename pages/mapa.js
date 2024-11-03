@@ -70,7 +70,6 @@ const Naslov = styled.div`
   /* text-shadow: 0px 2px 11px #0000006e; */
   @media screen and (max-width: 850px) {
     left: 10px;
-    top: 25px;
 
     font-size: 24px;
   }
@@ -273,7 +272,7 @@ const PodNaslov = styled.div`
   @media screen and (max-width: 850px) {
     left: 10px;
 
-    top: 55px;
+    top: 43px;
 
     font-size: 18px;
   }
@@ -312,7 +311,7 @@ const PodNaslov2 = styled.div`
   @media screen and (max-width: 850px) {
     left: 10px;
 
-    top: 80px;
+    top: 68px;
     font-size: 12px;
   }
 `;
