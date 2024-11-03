@@ -175,7 +175,7 @@ export const Text = styled.div`
   font-size: 16px;
   text-align: center;
   max-width: 600px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 20px auto;
 
   @media only screen and (max-width: 1250px) {
   }
@@ -268,6 +268,41 @@ export const TimeAmount = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
+export const WrapTagCloud = styled.div`
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 auto 30px auto;
+
+  width: 70%;
+  justify-content: center;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const SingleTag = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  background-color: #d9cdb6;
+  margin: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: black;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+
 export const Author = styled.div`
   position: absolute;
   bottom: 15px;

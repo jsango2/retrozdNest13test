@@ -241,7 +241,7 @@ function BlogPost({ post }) {
               ← Vrati se na postove
             </Link>
 
-            <BlogTitle className="md:text-3xl xl:text-4xl font-bold mb-8 text-black">
+            <BlogTitle className="md:text-3xl xl:text-5xl font-bold mb-8 text-black">
               {post.title}
             </BlogTitle>
             <AuthorBlog>

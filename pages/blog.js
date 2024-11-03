@@ -12,7 +12,7 @@ import Link from "next/link";
 import { client } from "../lib/sanity/client";
 import { urlFor } from "../lib/sanity/fetchImg";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   WrapCard,
   BlogSectionTitle,
@@ -24,13 +24,17 @@ import {
   Author,
   BlogBackground,
   ReadingTime,
+  WrapTagCloud,
+  SingleTag,
 } from "../styles/styles";
 import Layout from "../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
 
 import BlogCard from "../components/blogCard";
-function Blog({ data }) {
+function Blog({ data, tagData }) {
+  const [selectedTag, setSelectedTag] = useState("Svi");
+  const [filteredData, setFilteredData] = useState([]);
   const components = {
     types: {
       image: ({ value }) =>
@@ -44,7 +48,25 @@ function Blog({ data }) {
       // Optionally, add serializers for other custom Sanity blocks here
     },
   };
-  console.log(data);
+  // console.log(data);
+  // console.log({ tagData });
+
+  useEffect(() => {
+    if (selectedTag === "Svi") {
+      setFilteredData(data);
+    } else
+      setFilteredData(
+        data.filter(
+          (item) =>
+            item.tags &&
+            item.tags.some((tag) =>
+              tag.title.toLowerCase().includes(selectedTag.toLowerCase())
+            )
+        )
+      );
+  }, [selectedTag]);
+
+  console.log(filteredData);
 
   return (
     <>
@@ -120,8 +142,16 @@ function Blog({ data }) {
               Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i
               zaboravljene kutke koji oživljavaju duh prošlih vremena.
             </Text>
+            <WrapTagCloud>
+              <SingleTag onClick={() => setSelectedTag("Svi")}>Svi</SingleTag>
+              {tagData.map((tag) => (
+                <SingleTag onClick={() => setSelectedTag(tag.title)}>
+                  {tag.title}
+                </SingleTag>
+              ))}
+            </WrapTagCloud>
             <WrapBlogCards>
-              {data.map((post) => (
+              {filteredData.map((post) => (
                 <BlogCard
                   key={post._id}
                   link={post.slug.current}
@@ -144,7 +174,7 @@ function Blog({ data }) {
 export default Blog;
 
 export async function getStaticProps() {
-  const POST_QUERY = `*[_type == "post"] {
+  const POST_QUERY = `*[_type == "post" ] {
   _id,
   title,
   slug,
@@ -171,11 +201,16 @@ export async function getStaticProps() {
     }
   }
 }`;
+  const TAG_QUERY = `*[_type == "tag" ] {
+  title,
+}`;
   const data = await client.fetch(POST_QUERY);
+  const tagData = await client.fetch(TAG_QUERY);
 
   return {
     props: {
       data,
+      tagData,
     },
     revalidate: 60,
   };
