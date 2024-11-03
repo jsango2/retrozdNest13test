@@ -45,7 +45,7 @@ export const WrapCard = styled.div`
     padding-bottom: 100px;
   }
   @media only screen and (max-width: 550px) {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
   }
 `;
 export const BlogSectionTitle = styled.div`
