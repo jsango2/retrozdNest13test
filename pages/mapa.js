@@ -58,7 +58,7 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 const Naslov = styled.div`
   position: fixed;
   left: 273px;
-  top: 23px;
+  top: 13px;
   z-index: 2;
   color: ${(props) => (props.mapStyle ? "#3f230f" : "white")};
 
@@ -1552,9 +1552,9 @@ function Mapa({ data }) {
             allData={allDataFromDB}
           />
         )}
-        {/* <Naslov mapStyle={mapStyle}>
+        <Naslov mapStyle={mapStyle}>
           RETRO ZADAR <br />
-        </Naslov> */}
+        </Naslov>
         <PodNaslov mapStyle={mapStyle}>
           {value[0]}-{value[1]}
         </PodNaslov>

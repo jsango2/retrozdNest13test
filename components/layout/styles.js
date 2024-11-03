@@ -51,6 +51,7 @@ export const WrapLogo = styled.div`
   margin: 0;
   cursor: pointer;
   left: ${(props) => (props.isMap ? "228px" : "")};
+  display: ${(props) => (props.isMap ? "none" : "block")};
 
   /* font-style: bold;
   font-weight: 700; */
