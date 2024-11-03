@@ -283,7 +283,8 @@ export const WrapTagCloud = styled.div`
   justify-content: center;
   @media only screen and (max-width: 1250px) {
   }
-  @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 850px) {
+    width: 92%;
   }
 `;
 export const SingleTag = styled.div`
