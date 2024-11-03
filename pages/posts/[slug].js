@@ -21,11 +21,14 @@ import {
   BlogBackground,
   BlogContent,
   BlogTitle,
+  Caption,
+  WrapOverlayBlock,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
 import useWindowSize from "../../components/helper/usewindowsize";
+import { useReadingTime } from "react-hook-reading-time";
 function BlogPost({ post }) {
   const size = useWindowSize();
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -84,7 +87,17 @@ function BlogPost({ post }) {
       ),
     },
   };
-
+  const filteredBlock = post.body
+    .filter((x) => x._type === "block")
+    .map((children) => children.children.map((texts) => texts.text));
+  console.log(filteredBlock);
+  const {
+    text, // 1 min read
+    minutes, // 1
+    words, // 168
+    time, // 0.5309090909090909
+  } = useReadingTime(filteredBlock.join(" "));
+  console.log(minutes);
   useEffect(() => {
     if (post.oldImage) {
       if ("ontouchstart" in document.documentElement) {
@@ -156,7 +169,6 @@ function BlogPost({ post }) {
     //     });
     // }
   }, []);
-
   return (
     <>
       <Head>
@@ -234,30 +246,33 @@ function BlogPost({ post }) {
             </BlogTitle>
             <AuthorBlog>
               <span style={{ fontWeight: "600" }}>Autor:</span>{" "}
-              {post.author.name}, Retro Zadar
+              {post.author.name}
             </AuthorBlog>
             <DateBlog>{formattedDate}</DateBlog>
-            {post.oldImage && (
-              <div className="reveal revealAnimation">
-                <img
-                  id="imagePopup"
-                  className="swipeFinger shrinkSwiper"
-                  src="/swiperWhite.svg"
-                ></img>
-                <img
-                  src={urlFor(post.oldImage).width(750).url()}
-                  alt={post.oldImage.alt || "Sanity Image"}
-                  className="img3"
-                />
-                <img
-                  src={urlFor(post.newImage).width(750).url()}
-                  alt={post.newImage.alt || "Sanity Image"}
-                  className="img4"
-                />
-                <div id="activator" className="activator"></div>
-                <div id="divider" className="divider"></div>
-              </div>
-            )}
+            <WrapOverlayBlock>
+              {post.oldImage && (
+                <div className="reveal revealAnimation">
+                  <img
+                    id="imagePopup"
+                    className="swipeFinger shrinkSwiper"
+                    src="/swiperWhite.svg"
+                  ></img>
+                  <img
+                    src={urlFor(post.oldImage).width(750).url()}
+                    alt={post.oldImage.alt || "Sanity Image"}
+                    className="img3"
+                  />
+                  <img
+                    src={urlFor(post.newImage).width(750).url()}
+                    alt={post.newImage.alt || "Sanity Image"}
+                    className="img4"
+                  />
+                  <div id="activator" className="activator"></div>
+                  <div id="divider" className="divider"></div>
+                </div>
+              )}
+              {post.caption && <Caption>{post.caption}</Caption>}
+            </WrapOverlayBlock>
             <BlogContent className="prose">
               {Array.isArray(post.body) && (
                 <PortableText value={post.body} components={components} />
@@ -295,6 +310,7 @@ export async function getStaticProps({ params }) {
   oldImage,
   newImage,
   publishedAt,
+  caption,
   "author": author->{
     _id,
     name,

@@ -407,7 +407,7 @@ function Mapa({ data }) {
   const [lng, setLng] = useState(15.2264);
   const [lat, setLat] = useState(44.1137);
   const [lngLat, setLngLat] = useState(null);
-  const [zoom, setZoom] = useState(13.7);
+  const [zoom, setZoom] = useState(11.7);
   const [hasPoints, setHasPoints] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -712,6 +712,16 @@ function Mapa({ data }) {
       map.resize();
     });
 
+    const animationOptions = {
+      duration: 5,
+      easing: function (t) {
+        return 1 - Math.pow(1 - t, 5);
+      },
+      offset: [0, 0],
+      animate: true,
+      essential: true, // animation will happen even if user has `prefers-reduced-motion` setting on
+    };
+
     map.on("load", function () {
       map.loadImage(
         mapStyle ? "/lightPoint.png" : "/darkPoint.png",
@@ -720,7 +730,13 @@ function Mapa({ data }) {
           map.addImage("cat", image);
         }
       );
-
+      map.flyTo({
+        center: [15.226, 44.113], // Target center coordinates
+        zoom: 13.5, // Target zoom level
+        speed: 0.09, // Speed of the zoom (1 is default, less is slower)
+        curve: 1.5, // Controls the zoom "curve" (1 is default)
+        essential: true, // Ensures this animation is not cut by user interaction
+      });
       // map.resize();
 
       // const filterEl = document.getElementById("feature-filter");

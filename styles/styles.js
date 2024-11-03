@@ -147,16 +147,7 @@ export const Tag = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
-export const Author = styled.div`
-  position: relative;
-  margin: 10px 20px 7px 20px;
-  color: black;
-  font-size: 14px;
-  @media only screen and (max-width: 1250px) {
-  }
-  @media only screen and (max-width: 550px) {
-  }
-`;
+
 export const AuthorBlog = styled.div`
   position: relative;
   margin: 10px 20px 0px 0px;
@@ -222,6 +213,73 @@ export const BlogBackground = styled.div`
   background-color: #f8efe3;
 
   /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const Caption = styled.div`
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  font-style: italic;
+  font-size: 12px;
+  color: black;
+
+  /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const WrapOverlayBlock = styled.div`
+  position: relative;
+  margin-bottom: 30px;
+  /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const ReadingTime = styled.div`
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  /* font-style: italic; */
+  font-size: 14px;
+  color: grey;
+  display: flex;
+  align-items: center;
+  /* background: repeat center url("/laureana1b.png"); */
+  svg {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const TimeAmount = styled.div`
+  position: relative;
+  margin-left: 5px;
+
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const Author = styled.div`
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  color: grey;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  svg {
+    font-size: 16px;
+    margin-right: 5px;
+  }
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {

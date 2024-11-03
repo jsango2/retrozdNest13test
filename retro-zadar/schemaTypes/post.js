@@ -42,6 +42,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'caption',
+      title: 'Caption overlay fotografija',
+      type: 'string',
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',

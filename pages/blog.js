@@ -23,11 +23,13 @@ import {
   Text,
   Author,
   BlogBackground,
+  ReadingTime,
 } from "../styles/styles";
 import Layout from "../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
 
+import BlogCard from "../components/blogCard";
 function Blog({ data }) {
   const components = {
     types: {
@@ -43,21 +45,6 @@ function Blog({ data }) {
     },
   };
   console.log(data);
-
-  function truncateSentence(text, maxLength = 140) {
-    if (text.length <= maxLength) return text; // Return original if within limit
-
-    // Trim the text to maxLength and look for the last space before the cut
-    let truncated = text.slice(0, maxLength);
-    const lastSpaceIndex = truncated.lastIndexOf(" ");
-
-    // If a space is found, trim to that space; otherwise, use the maxLength
-    if (lastSpaceIndex > -1) {
-      truncated = truncated.slice(0, lastSpaceIndex);
-    }
-
-    return truncated + "...";
-  }
 
   return (
     <>
@@ -135,22 +122,16 @@ function Blog({ data }) {
             </Text>
             <WrapBlogCards>
               {data.map((post) => (
-                <Link href={`/posts/${post.slug.current}`} key={post._id}>
-                  <WrapCard>
-                    <img
-                      src={urlFor(post.mainImage).width(800).url()}
-                      alt={post.mainImage.alt || "Sanity Image"}
-                      className="rounded-lg"
-                    />
-                    <Author>Autor: {post.author.name}, Retro Zadar</Author>
-                    <h2>{post.title}</h2>
-                    <p>{truncateSentence(post.kratkiOpis)}</p>
-                    {/* <WrapTags>
-                      {post.tags &&
-                        post.tags.map((tag) => <Tag>{tag.title}</Tag>)}
-                    </WrapTags> */}
-                  </WrapCard>
-                </Link>
+                <BlogCard
+                  key={post._id}
+                  link={post.slug.current}
+                  image={post.mainImage}
+                  alt={post.mainImage.alt}
+                  kratkiOpis={post.kratkiOpis}
+                  author={post.author.name}
+                  body={post.body}
+                  title={post.title}
+                />
               ))}
             </WrapBlogCards>
           </WrapBlogSection>
@@ -198,4 +179,21 @@ export async function getStaticProps() {
     },
     revalidate: 60,
   };
+}
+
+{
+  /* <Link href={`/posts/${post.slug.current}`} key={post._id}>
+                  <WrapCard>
+                    <img
+                      src={urlFor(post.mainImage).width(800).url()}
+                      alt={post.mainImage.alt || "Sanity Image"}
+                      className="rounded-lg"
+                    />
+                    <Author>Autor: {post.author.name}, Retro Zadar</Author>
+                    <h2>{post.title}</h2>
+                    <p>{truncateSentence(post.kratkiOpis)}</p>
+                
+                    <ReadingTime>{time}</ReadingTime>
+                  </WrapCard>
+                </Link> */
 }
