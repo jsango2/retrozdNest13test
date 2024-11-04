@@ -45,7 +45,9 @@ export const WrapCard = styled.div`
     padding-bottom: 100px;
   }
   @media only screen and (max-width: 550px) {
+    width: 100%;
     padding-bottom: 50px;
+    margin: 20px 0px;
   }
 `;
 export const BlogSectionTitle = styled.div`

@@ -66,8 +66,6 @@ function Blog({ data, tagData }) {
       );
   }, [selectedTag]);
 
-  console.log(filteredData);
-
   return (
     <>
       <Head>
@@ -145,7 +143,10 @@ function Blog({ data, tagData }) {
             <WrapTagCloud>
               <SingleTag onClick={() => setSelectedTag("Svi")}>Svi</SingleTag>
               {tagData.map((tag) => (
-                <SingleTag onClick={() => setSelectedTag(tag.title)}>
+                <SingleTag
+                  onClick={() => setSelectedTag(tag.title)}
+                  key={tag.title}
+                >
                   {tag.title}
                 </SingleTag>
               ))}
