@@ -324,3 +324,20 @@ export const Author = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
+export const ImageCaption = styled.div`
+  position: relative;
+  /* right: 0; */
+  margin-left: auto;
+  /* margin-bottom: 20px; */
+  /* bottom: 0; */
+  width: fit-content;
+  font-style: italic;
+  font-size: 12px;
+  color: black;
+  font-family: Montserrat;
+
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;

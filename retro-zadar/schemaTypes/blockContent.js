@@ -62,6 +62,24 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+          options: {
+            isHighlighted: true, // Makes the caption field easier to access in the Sanity Studio
+          },
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          options: {
+            isHighlighted: true, // Makes the alt field more accessible
+          },
+        },
+      ],
     }),
   ],
 })

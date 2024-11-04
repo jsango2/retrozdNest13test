@@ -23,6 +23,7 @@ import {
   BlogTitle,
   Caption,
   WrapOverlayBlock,
+  ImageCaption,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
@@ -50,11 +51,14 @@ function BlogPost({ post }) {
     types: {
       image: ({ value }) =>
         value && (
-          <img
-            src={urlFor(value).width(800).url()}
-            alt={value.alt || "Sanity Image"}
-            className="my-4 rounded-lg"
-          />
+          <>
+            <img
+              src={urlFor(value).width(800).url()}
+              alt={value.alt || "Sanity Image"}
+              className="my-4 rounded-lg mb-3"
+            />
+            <ImageCaption>{value.caption}</ImageCaption>
+          </>
         ),
       // Optionally, add serializers for other custom Sanity blocks here
     },
