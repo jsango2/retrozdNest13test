@@ -301,6 +301,9 @@ export const SingleTag = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    font-size: smaller;
+    padding: 2px 8px;
+    margin: 4px 6px;
   }
 `;
 
