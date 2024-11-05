@@ -402,11 +402,11 @@ function Mapa({ data }) {
   splitbee.init();
   //   const { t } = useTranslation();
   const size = useWindowSize();
-  const router = useRouter();
+
   const [lng, setLng] = useState(15.2264);
   const [lat, setLat] = useState(44.1137);
   const [lngLat, setLngLat] = useState(null);
-  const [zoom, setZoom] = useState(11.7);
+  const [zoom, setZoom] = useState(14.27);
   const [hasPoints, setHasPoints] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -432,12 +432,23 @@ function Mapa({ data }) {
   const [isMapTogglerHovering, setIsMapTogglerHovering] = useState(false);
   const [isLatest, setIsLatest] = useState(false);
   const [isPointerInPopup, setIsPointerInPopup] = useState(false);
+  // const [hashZoom, setHashZoom] = useState(13.5);
+  // const [hashLat, setHashLat] = useState(44.1137);
+  // const [hashLng, setHashLng] = useState(15.2264);
 
   const [geoData, setGeoData] = useState([]);
   const [geoData2, setGeoData2] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [value, setValue] = React.useState([1611, 2010]);
+  // useEffect(() => {
+  //   let str = window.location.hash;
+  //   var mySubString = str.substring(str.indexOf("#") + 1, str.lastIndexOf("/"));
+  //   const parts = mySubString.split("/");
+
+  //   setHashZoom(parts[0] - 0.4);
+  // }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setFirstScreen(true);
@@ -730,13 +741,14 @@ function Mapa({ data }) {
           map.addImage("cat", image);
         }
       );
-      map.flyTo({
-        center: [15.226, 44.113], // Target center coordinates
-        zoom: 13.5, // Target zoom level
-        speed: 0.09, // Speed of the zoom (1 is default, less is slower)
-        curve: 1.5, // Controls the zoom "curve" (1 is default)
-        essential: true, // Ensures this animation is not cut by user interaction
-      });
+
+      // map.flyTo({
+      //   // center: [15.2264, 44.1137], // Target center coordinates
+      //   zoom: zoom + 0.1, // Target zoom level
+      //   speed: 0.09, // Speed of the zoom (1 is default, less is slower)
+      //   curve: 1.5, // Controls the zoom "curve" (1 is default)
+      //   essential: true, // Ensures this animation is not cut by user interaction
+      // });
       // map.resize();
 
       // const filterEl = document.getElementById("feature-filter");
