@@ -1465,31 +1465,76 @@ function Mapa({ data }) {
   return (
     <div>
       <Head>
-        <title>Retro Zadar</title>
-        <meta property="og:title" content="Retro Zadar" key="title" />
-        <link
-          rel="canonical"
-          href="https://retrozadar.com/mapa"
-          key="canonical"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        <Head>
+          <meta name="robots" content="noindex, nofollow" />
+          <title>{post.title}</title>
+          <meta
+            property="og:title"
+            content={`Retro Zadar Mapa - pogledaj ovu fotografiju!`}
+            key="title"
+          />
+          <link
+            rel="canonical"
+            href={`https://www.retrozadar.com/mapa`}
+            key="canonical"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="manifest" href="/site.webmanifest" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff" />
+          {/* og data: */}
+          <meta property="og:type" content="website" />
+          <meta
+            name="description"
+            content="Retro Zadar Mapa, Stare fotografije Zadra. "
+          />
 
+          <meta property="og:url" content={`https://www.retrozadar.com/mapa`} />
+          <meta property="og:type" content="website" />
+
+          <meta
+            property="og:description"
+            content="Retro Zadar Mapa, Stare fotografije Zadra. "
+          />
+          <meta
+            name="keywords"
+            content="stare fotografije zadra, nekad, sad, zadar, razglednice"
+          />
+          <meta property="og:image" content="https://retrozadar.com/og2.png" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            property="twitter:domain"
+            content={`https://www.retrozadar.com/mapa`}
+          />
+          <meta
+            property="twitter:url"
+            content={`https://www.retrozadar.com/mapa`}
+          />
+          <meta name="twitter:title" content={post.title} />
+          <meta
+            name="twitter:description"
+            content="Retro Zadar Mapa, Stare fotografije Zadra. "
+          />
+          <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
+        </Head>{" "}
         <meta name="robots" content="noindex, nofollow" />
       </Head>{" "}
       <Layout isMap={true}>

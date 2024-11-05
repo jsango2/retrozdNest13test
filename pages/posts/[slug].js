@@ -178,7 +178,11 @@ function BlogPost({ post }) {
       <Head>
         <meta name="robots" content="noindex, nofollow" />
         <title>{post.title}</title>
-        <meta property="og:title" content="Retro Zadar Blog " key="title" />
+        <meta
+          property="og:title"
+          content={`Retro Zadar Blog -${post.title}`}
+          key="title"
+        />
         <link
           rel="canonical"
           href={`https://www.retrozadar.com/posts/${post.slug.current}`}
