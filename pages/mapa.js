@@ -689,6 +689,7 @@ function Mapa({ data }) {
       minZoom: 13, // note the camel-case
       maxZoom: 21,
       maxBounds: maxBounds,
+      hash: true,
     });
     const popup = new mapboxgl.Popup({
       closeButton: false,
