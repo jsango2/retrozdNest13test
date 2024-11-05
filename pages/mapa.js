@@ -1467,7 +1467,7 @@ function Mapa({ data }) {
       <Head>
         <Head>
           <meta name="robots" content="noindex, nofollow" />
-          <title>{post.title}</title>
+          <title>Retro Zadar Mapa</title>
           <meta
             property="og:title"
             content={`Retro Zadar Mapa - pogledaj ovu fotografiju!`}
@@ -1528,7 +1528,7 @@ function Mapa({ data }) {
             property="twitter:url"
             content={`https://www.retrozadar.com/mapa`}
           />
-          <meta name="twitter:title" content={post.title} />
+          <meta name="twitter:title" content="Retro Zadar Mapa" />
           <meta
             name="twitter:description"
             content="Retro Zadar Mapa, Stare fotografije Zadra. "
