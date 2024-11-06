@@ -20,6 +20,7 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 750px) {
@@ -31,7 +32,8 @@ export const WrapLinks = styled.div`
   max-width: 500px;
   height: 100%;
   margin-left: auto;
-  margin-right: 80px;
+  margin-right: ${(props) => (props.isFooter ? "0" : "80px")};
+
   display: flex;
   align-items: center;
   @media only screen and (max-width: 1250px) {

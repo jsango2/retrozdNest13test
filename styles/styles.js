@@ -94,6 +94,23 @@ export const WrapBlogCards = styled.div`
     flex-wrap: wrap;
   }
 `;
+export const WrapBlogCardsinBlogPost = styled.div`
+  position: relative;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+  @media only screen and (max-width: 1250px) {
+    height: auto;
+    padding-bottom: 100px;
+  }
+  @media only screen and (max-width: 750px) {
+    padding-bottom: 80px;
+    flex-wrap: wrap;
+  }
+`;
 
 export const WrapTwoOverlays = styled.div`
   position: relative;
@@ -152,7 +169,20 @@ export const Tag = styled.div`
 
 export const AuthorBlog = styled.div`
   position: relative;
-  margin: 10px 20px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  color: black;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const DateBlog = styled.div`
+  display: inline-block;
+  position: relative;
+  margin: 0px 0px 0px 0px;
   color: black;
   font-size: 14px;
   @media only screen and (max-width: 1250px) {
@@ -160,11 +190,37 @@ export const AuthorBlog = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
-export const DateBlog = styled.div`
+export const Avatar = styled.div`
   position: relative;
-  margin: 0px 20px 7px 0px;
-  color: black;
-  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: ${(props) => `url(${props.src})`};
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const VerticalLine = styled.div`
+  height: 14px;
+  width: 1.5px;
+  background-color: black;
+  margin: 0 14px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const WrapAuthorDate = styled.div`
+  display: flex;
+  position: relative;
+  margin: 10px 0;
+  align-items: center;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
@@ -245,8 +301,44 @@ export const WrapOverlayBlock = styled.div`
 `;
 export const ReadingTime = styled.div`
   position: absolute;
+  top: 200px;
+  right: 20px;
+  /* font-style: italic; */
+  font-size: 14px;
+  color: #00000096;
+  display: flex;
+  align-items: center;
+  /* background: repeat center url("/laureana1b.png"); */
+  svg {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const BlogDate = styled.div`
+  position: absolute;
   bottom: 15px;
   right: 20px;
+  /* font-style: italic; */
+  font-size: 14px;
+  color: grey;
+  display: flex;
+  align-items: center;
+  color: grey;
+  /* background: repeat center url("/laureana1b.png"); */
+  svg {
+    font-size: 16px;
+  }
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const ReadingTimeBlog = styled.div`
+  position: relative;
+
   /* font-style: italic; */
   font-size: 14px;
   color: grey;
@@ -338,6 +430,32 @@ export const ImageCaption = styled.div`
   color: black;
   font-family: Montserrat;
 
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const MoreBlogs = styled.div`
+  position: relative;
+  margin-top: 50px;
+  color: black;
+  padding-bottom: 100px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const MoreBlogstitle = styled.div`
+  position: relative;
+  position: relative;
+
+  font-size: 55px;
+  font-family: "Garamond";
+  font-weight: 700;
+  color: #3f230f;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {

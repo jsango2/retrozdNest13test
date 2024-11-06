@@ -16,16 +16,39 @@ import {
   // BlogBackground,
   ReadingTime,
   TimeAmount,
+  BlogDate,
 } from "../../styles/styles";
 import { IoMdTime } from "react-icons/io";
-import { LuPencil } from "react-icons/lu";
+import { RiQuillPenLine } from "react-icons/ri";
 // import "./layout.css";
 // import Footer from "../footer/footer";
 // import { Helmet } from "react-helmet";
 
 import { useReadingTime } from "react-hook-reading-time";
 
-const BlogCard = ({ link, image, alt, kratkiOpis, author, body, title }) => {
+const BlogCard = ({
+  link,
+  image,
+  alt,
+  kratkiOpis,
+  author,
+  body,
+  title,
+  date,
+}) => {
+  // console.log(post);
+  const dateStr = date;
+
+  // Convert to a Date object
+  const dateObj = new Date(dateStr);
+
+  // Extract day, month, and year
+  const day = String(dateObj.getUTCDate()).padStart(2, "0");
+  const month = String(dateObj.getUTCMonth() + 1).padStart(2, "0"); // Months are 0-based
+  const year = dateObj.getUTCFullYear();
+
+  // Format as dd/mm/yyyy
+  const formattedDate = `${day}/${month}/${year}`;
   function truncateSentence(text, maxLength = 140) {
     if (text.length <= maxLength) return text; // Return original if within limit
 
@@ -58,6 +81,10 @@ const BlogCard = ({ link, image, alt, kratkiOpis, author, body, title }) => {
           alt={alt || "Sanity Image"}
           className="rounded-lg"
         />
+        {/* <ReadingTime>
+          <IoMdTime />
+          <TimeAmount>{time.toFixed(0)} min</TimeAmount>
+        </ReadingTime> */}
         <h2 style={{ marginTop: "20px" }}>{title}</h2>
         <p>{truncateSentence(kratkiOpis)}</p>
         {/* <WrapTags>
@@ -65,12 +92,9 @@ const BlogCard = ({ link, image, alt, kratkiOpis, author, body, title }) => {
           post.tags.map((tag) => <Tag>{tag.title}</Tag>)}
       </WrapTags> */}
         <Author>
-          <LuPencil /> {author}
+          <RiQuillPenLine /> {author}
         </Author>
-        <ReadingTime>
-          <IoMdTime />
-          <TimeAmount>{time.toFixed(0)} min</TimeAmount>
-        </ReadingTime>
+        <BlogDate>{formattedDate}</BlogDate>
       </WrapCard>
     </Link>
   );

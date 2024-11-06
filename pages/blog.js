@@ -35,6 +35,10 @@ import BlogCard from "../components/blogCard";
 function Blog({ data, tagData }) {
   const [selectedTag, setSelectedTag] = useState("Svi");
   const [filteredData, setFilteredData] = useState([]);
+  console.log(data);
+  const sortByDate = data.sort(
+    (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+  );
   const components = {
     types: {
       image: ({ value }) =>
@@ -56,7 +60,7 @@ function Blog({ data, tagData }) {
       setFilteredData(data);
     } else
       setFilteredData(
-        data.filter(
+        sortByDate.filter(
           (item) =>
             item.tags &&
             item.tags.some((tag) =>
@@ -162,6 +166,7 @@ function Blog({ data, tagData }) {
                   author={post.author.name}
                   body={post.body}
                   title={post.title}
+                  date={post.publishedAt}
                 />
               ))}
             </WrapBlogCards>

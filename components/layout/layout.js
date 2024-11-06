@@ -4,6 +4,7 @@
 
 import Link from "next/link";
 import { Container, HeaderWrap, WrapLogo, WrapLinks, WrapLink } from "./styles";
+import Footer from "../Footer";
 
 // import "./layout.css";
 // import Footer from "../footer/footer";
@@ -13,26 +14,25 @@ const Layout = ({ children, isMap }) => {
   return (
     <>
       {/* <Header siteTitle={`Title`} /> */}
-      <div>
-        <HeaderWrap isMap={isMap}>
-          <Container>
-            <Link href="/">
-              <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>
-            </Link>
-            <WrapLinks>
-              <Link href="/blog">
-                <WrapLink>Blog</WrapLink>
-              </Link>
-              <Link href="/mapa">
-                <WrapLink>Mapa</WrapLink>
-              </Link>
-            </WrapLinks>
-          </Container>
-        </HeaderWrap>
-        <main>{children}</main>
 
-        {/* <Footer /> */}
-      </div>
+      <HeaderWrap isMap={isMap}>
+        <Container>
+          <Link href="/">
+            <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>
+          </Link>
+          <WrapLinks>
+            <Link href="/blog">
+              <WrapLink>Blog</WrapLink>
+            </Link>
+            <Link href="/mapa">
+              <WrapLink>Mapa</WrapLink>
+            </Link>
+          </WrapLinks>
+        </Container>
+      </HeaderWrap>
+      <main>{children}</main>
+
+      <Footer isMap={isMap} />
     </>
   );
 };

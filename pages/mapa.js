@@ -403,10 +403,10 @@ function Mapa({ data }) {
   //   const { t } = useTranslation();
   const size = useWindowSize();
 
-  const [lng, setLng] = useState(15.2264);
-  const [lat, setLat] = useState(44.1137);
+  const [lng, setLng] = useState(15.2274);
+  const [lat, setLat] = useState(44.1139);
   const [lngLat, setLngLat] = useState(null);
-  const [zoom, setZoom] = useState(14.27);
+  const [zoom, setZoom] = useState(14.04);
   const [hasPoints, setHasPoints] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -742,14 +742,14 @@ function Mapa({ data }) {
         }
       );
 
-      // map.flyTo({
-      //   // center: [15.2264, 44.1137], // Target center coordinates
-      //   zoom: zoom + 0.1, // Target zoom level
-      //   speed: 0.09, // Speed of the zoom (1 is default, less is slower)
-      //   curve: 1.5, // Controls the zoom "curve" (1 is default)
-      //   essential: true, // Ensures this animation is not cut by user interaction
-      // });
-      // map.resize();
+      map.flyTo({
+        // center: [15.2264, 44.1137], // Target center coordinates
+        zoom: 14.6, // Target zoom level
+        speed: 0.12, // Speed of the zoom (1 is default, less is slower)
+        curve: 1.5, // Controls the zoom "curve" (1 is default)
+        essential: true, // Ensures this animation is not cut by user interaction
+      });
+      map.resize();
 
       // const filterEl = document.getElementById("feature-filter");
       const listingEl = document.getElementById("feature-listing");

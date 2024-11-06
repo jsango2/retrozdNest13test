@@ -24,16 +24,30 @@ import {
   Caption,
   WrapOverlayBlock,
   ImageCaption,
+  WrapAuthorDate,
+  VerticalLine,
+  ReadingTimeBlog,
+  TimeAmount,
+  MoreBlogs,
+  MoreBlogstitle,
+  WrapBlogCardsinBlogPost,
+  Avatar,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
 import Head from "next/head";
 import useWindowSize from "../../components/helper/usewindowsize";
 import { useReadingTime } from "react-hook-reading-time";
-function BlogPost({ post }) {
+import { IoMdTime } from "react-icons/io";
+import BlogCard from "../../components/blogCard";
+
+function BlogPost({ post, all_posts }) {
   const size = useWindowSize();
   const [isTouchDevice, setisTouchDevice] = useState(false);
-  console.log(post);
+  const [filteredData, setFilteredData] = useState([]);
+
+  console.log("Trenutni post", post);
+
   //   console.log(post);
   const dateStr = post.publishedAt;
 
@@ -94,14 +108,14 @@ function BlogPost({ post }) {
   const filteredBlock = post.body
     .filter((x) => x._type === "block")
     .map((children) => children.children.map((texts) => texts.text));
-  console.log(filteredBlock);
+
   const {
     text, // 1 min read
     minutes, // 1
     words, // 168
     time, // 0.5309090909090909
   } = useReadingTime(filteredBlock.join(" "));
-  console.log(minutes);
+
   useEffect(() => {
     if (post.oldImage) {
       if ("ontouchstart" in document.documentElement) {
@@ -173,6 +187,17 @@ function BlogPost({ post }) {
     //     });
     // }
   }, []);
+
+  useEffect(() => {
+    const filter = all_posts.filter((item) =>
+      item.tags.some((tag) => post.tags.some((t) => t.title === tag.title))
+    );
+    const filterWithoutSelf = filter.filter(
+      (singlePost) => singlePost.title != post.title
+    );
+    setFilteredData(filterWithoutSelf);
+  }, []);
+
   return (
     <>
       <Head>
@@ -244,7 +269,7 @@ function BlogPost({ post }) {
           {/* <BlogBackground>
           <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
         </BlogBackground> */}
-          <main className="container mx-auto min-h-screen max-w-3xl p-6 pt-11 flex flex-col gap-1 text-black">
+          <main className="container mx-auto min-h-screen max-w-3xl  pt-11 pb-12 flex flex-col gap-1 text-black">
             <Link href="/blog" className="hover:underline">
               ← Vrati se na postove
             </Link>
@@ -252,11 +277,29 @@ function BlogPost({ post }) {
             <BlogTitle className="md:text-3xl xl:text-5xl font-bold mb-8 text-black">
               {post.title}
             </BlogTitle>
-            <AuthorBlog>
-              <span style={{ fontWeight: "600" }}>Autor:</span>{" "}
-              {post.author.name}
-            </AuthorBlog>
-            <DateBlog>{formattedDate}</DateBlog>
+            <WrapAuthorDate>
+              <AuthorBlog>
+                {/* <span style={{ fontWeight: "600" }}>Autor:</span>{" "} */}
+                {post.author.imageUrl ? (
+                  <Avatar src={urlFor(post.author.imageUrl).width(30).url()}>
+                    {/* {post.author.imageUrl && (
+                    <img src={urlFor(post.author.imageUrl).width(30).url()} />
+                  )} */}
+                  </Avatar>
+                ) : (
+                  "Autor: "
+                )}
+                {post.author.name}
+              </AuthorBlog>
+              <VerticalLine />
+              <DateBlog>{formattedDate}</DateBlog>
+              <VerticalLine />
+
+              <ReadingTimeBlog>
+                <IoMdTime />
+                <TimeAmount>{time.toFixed(0)} min</TimeAmount>
+              </ReadingTimeBlog>
+            </WrapAuthorDate>
             <WrapOverlayBlock>
               {post.oldImage && (
                 <div className="reveal revealAnimation">
@@ -288,6 +331,25 @@ function BlogPost({ post }) {
               {/* <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p> */}
             </BlogContent>
           </main>
+          {filteredData.length > 0 && (
+            <MoreBlogs>
+              <MoreBlogstitle>Slične teme</MoreBlogstitle>
+              <WrapBlogCardsinBlogPost>
+                {filteredData.map((post) => (
+                  <BlogCard
+                    key={post._id}
+                    link={post.slug.current}
+                    image={post.mainImage}
+                    alt={post.mainImage.alt}
+                    kratkiOpis={post.kratkiOpis}
+                    author={post.author.name}
+                    body={post.body}
+                    title={post.title}
+                  />
+                ))}
+              </WrapBlogCardsinBlogPost>
+            </MoreBlogs>
+          )}
         </div>
       </Layout>
     </>
@@ -308,6 +370,33 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const ALL_POSTS_QUERY = `*[_type == "post" ] {
+    _id,
+    title,
+    slug,
+    body,
+    kratkiOpis,
+    "author": author->{
+      _id,
+      name,
+      image
+    },
+    "category": category->{
+      _id,
+      title
+    },
+    tags[]->{
+      _id,
+      title
+    },
+    publishedAt,
+    mainImage {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }`;
   const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
@@ -322,7 +411,7 @@ export async function getStaticProps({ params }) {
   "author": author->{
     _id,
     name,
-    image
+"imageUrl": image.asset->_id
   },
   "category": category->{
     _id,
@@ -334,13 +423,14 @@ export async function getStaticProps({ params }) {
   }
 }`;
   const post = await client.fetch(POST_QUERY, { slug: params.slug });
+  const all_posts = await client.fetch(ALL_POSTS_QUERY);
 
   if (!post) {
     return { notFound: true };
   }
 
   return {
-    props: { post },
-    revalidate: 30, // Regenerate the page at most every 30 seconds (optional)
+    props: { post, all_posts },
+    revalidate: 90, // Regenerate the page at most every 30 seconds (optional)
   };
 }
