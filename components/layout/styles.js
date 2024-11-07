@@ -1,4 +1,14 @@
 import styled from "styled-components";
+export const WrapApp = styled.div`
+  position: relative;
+  width: 100%;
+
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 450px) {
+    width: 100vw;
+  }
+`;
 
 export const HeaderWrap = styled.div`
   position: absolute;

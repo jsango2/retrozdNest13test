@@ -3,7 +3,14 @@
 // import { useStaticQuery, graphql } from "gatsby"
 
 import Link from "next/link";
-import { Container, HeaderWrap, WrapLogo, WrapLinks, WrapLink } from "./styles";
+import {
+  Container,
+  HeaderWrap,
+  WrapLogo,
+  WrapLinks,
+  WrapLink,
+  WrapApp,
+} from "./styles";
 import Footer from "../Footer";
 
 // import "./layout.css";
@@ -12,7 +19,7 @@ import Footer from "../Footer";
 
 const Layout = ({ children, isMap }) => {
   return (
-    <>
+    <WrapApp>
       {/* <Header siteTitle={`Title`} /> */}
 
       <HeaderWrap isMap={isMap}>
@@ -33,7 +40,7 @@ const Layout = ({ children, isMap }) => {
       <main>{children}</main>
 
       <Footer isMap={isMap} />
-    </>
+    </WrapApp>
   );
 };
 
