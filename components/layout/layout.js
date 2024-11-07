@@ -19,7 +19,7 @@ import Footer from "../Footer";
 
 const Layout = ({ children, isMap }) => {
   return (
-    <WrapApp>
+    <>
       {/* <Header siteTitle={`Title`} /> */}
 
       <HeaderWrap isMap={isMap}>
@@ -40,7 +40,7 @@ const Layout = ({ children, isMap }) => {
       <main>{children}</main>
 
       <Footer isMap={isMap} />
-    </WrapApp>
+    </>
   );
 };
 

@@ -744,7 +744,7 @@ function Mapa({ data }) {
 
       map.flyTo({
         // center: [15.2264, 44.1137], // Target center coordinates
-        zoom: 14.6, // Target zoom level
+        // zoom: 14.6, // Target zoom level
         speed: 0.12, // Speed of the zoom (1 is default, less is slower)
         curve: 1.5, // Controls the zoom "curve" (1 is default)
         essential: true, // Ensures this animation is not cut by user interaction

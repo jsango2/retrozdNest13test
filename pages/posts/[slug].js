@@ -46,7 +46,7 @@ function BlogPost({ post, all_posts }) {
   const [isTouchDevice, setisTouchDevice] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
 
-  console.log("Trenutni post", post);
+  // console.log("Trenutni post", post);
 
   //   console.log(post);
   const dateStr = post.publishedAt;
