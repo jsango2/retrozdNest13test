@@ -111,7 +111,7 @@ function Blog({ data, tagData }) {
 
         <meta property="og:url" content="https://www.retrozadar.com/blog" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Retro Zadar" />
+        <meta property="og:title" content="Retro Zadar Priče" />
         <meta
           property="og:description"
           content="Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
