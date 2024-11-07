@@ -74,8 +74,8 @@ function Blog({ data, tagData }) {
     <>
       <Head>
         <meta name="robots" content="noindex, nofollow" />
-        <title>Retro Zadar Blog</title>
-        <meta property="og:title" content="Retro Zadar Blog" key="title" />
+        <title>Retro Zadar Priče</title>
+        <meta property="og:title" content="Retro Zadar Priče" key="title" />
         <link
           rel="canonical"
           href="https://retrozadar.com/blog"
@@ -128,7 +128,7 @@ function Blog({ data, tagData }) {
           property="twitter:url"
           content="https://www.retrozadar.com/blog"
         />
-        <meta name="twitter:title" content="Retro Zadar" />
+        <meta name="twitter:title" content="Retro Zadar Priče" />
         <meta
           name="twitter:description"
           content="Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i zaboravljene kutke koji oživljavaju duh prošlih vremena."
@@ -139,7 +139,7 @@ function Blog({ data, tagData }) {
         <div className="blogBackground">
           <WrapBlogSection>
             <BlogBackground></BlogBackground>
-            <BlogSectionTitle>Retro Zadar Blog</BlogSectionTitle>
+            <BlogSectionTitle>Retro Zadar Priče</BlogSectionTitle>
             <Text>
               Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i
               zaboravljene kutke koji oživljavaju duh prošlih vremena.
