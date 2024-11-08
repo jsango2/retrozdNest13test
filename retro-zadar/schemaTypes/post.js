@@ -47,6 +47,17 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'urlString',
+      title: 'Lokacija fotografa na Retro Zadar Mapi',
+      type: 'string',
+      description: 'Enter a URL as a plain string',
+      validation: (Rule) =>
+        Rule.regex(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i, {
+          name: 'url', // Error message for invalid format
+          invert: false, // Ensure the rule applies to matching URLs
+        }).error('Please enter a valid URL'),
+    }),
+    defineField({
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
@@ -77,6 +88,36 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    {
+      name: 'literatura',
+      title: 'Literatura',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'type',
+              title: 'Type',
+              type: 'string',
+            },
+            {
+              name: 'link',
+              title: 'External Link',
+              type: 'url',
+              description:
+                'Link to an external website with more information about this literature type.',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'type',
+              subtitle: 'link',
+            },
+          },
+        },
+      ],
+    },
     defineField({
       name: 'kratkiOpis',
       title: 'Kratki opis',

@@ -240,10 +240,23 @@ export const Text = styled.div`
   @media only screen and (max-width: 550px) {
   }
 `;
+export const Izvor = styled.div`
+  margin: 30px 0;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
 export const BlogContent = styled.div`
   position: relative;
   font-family: "Roboto", serif;
-
+  a {
+    color: darkred;
+  }
+  li {
+    font-style: italic;
+    font-size: 16px;
+  }
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
@@ -283,6 +296,49 @@ export const Caption = styled.div`
   font-style: italic;
   font-size: 12px;
   color: black;
+
+  /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+    /* right: 50%;
+    transform: translate(50%, 0); */
+  }
+`;
+export const CaptionUrl = styled.div`
+  position: relative;
+  color: darkred;
+  /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+    display: none;
+  }
+`;
+export const PositionLink = styled.div`
+  position: absolute;
+  bottom: -30px;
+  left: 20px;
+  font-style: italic;
+  font-size: 12px;
+  color: black;
+  display: flex;
+  align-items: center;
+
+  /* background: repeat center url("/laureana1b.png"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+    /* left: 50%;
+    transform: translate(-50%, 20px); */
+  }
+`;
+export const MapiconLocation = styled.div`
+  position: relative;
+  font-size: 18px;
+  color: #8b000070;
+  margin-right: 10px;
+  bottom: 3px;
 
   /* background: repeat center url("/laureana1b.png"); */
   @media only screen and (max-width: 1250px) {
@@ -429,7 +485,7 @@ export const ImageCaption = styled.div`
   font-size: 12px;
   color: black;
   font-family: Montserrat;
-
+  text-align: right;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {

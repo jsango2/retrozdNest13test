@@ -22,9 +22,12 @@ import {
   BlogContent,
   BlogTitle,
   Caption,
+  CaptionUrl,
+  PositionLink,
   WrapOverlayBlock,
   ImageCaption,
   WrapAuthorDate,
+  MapiconLocation,
   VerticalLine,
   ReadingTimeBlog,
   TimeAmount,
@@ -32,6 +35,7 @@ import {
   MoreBlogstitle,
   WrapBlogCardsinBlogPost,
   Avatar,
+  Izvor,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
@@ -40,13 +44,13 @@ import useWindowSize from "../../components/helper/usewindowsize";
 import { useReadingTime } from "react-hook-reading-time";
 import { IoMdTime } from "react-icons/io";
 import BlogCard from "../../components/blogCard";
-
+import { GrMapLocation } from "react-icons/gr";
 function BlogPost({ post, all_posts }) {
   const size = useWindowSize();
   const [isTouchDevice, setisTouchDevice] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
 
-  // console.log("Trenutni post", post);
+  console.log("Trenutni post", post);
 
   //   console.log(post);
   const dateStr = post.publishedAt;
@@ -327,12 +331,47 @@ function BlogPost({ post, all_posts }) {
                 </div>
               )}
               {post.caption && <Caption>{post.caption}</Caption>}
+              {post.urlString && (
+                <a href={post.urlString}>
+                  <PositionLink>
+                    <MapiconLocation>
+                      <GrMapLocation />{" "}
+                    </MapiconLocation>
+                    <CaptionUrl>Retro Zadar Pozicija</CaptionUrl>
+                  </PositionLink>
+                </a>
+              )}
             </WrapOverlayBlock>
             <BlogContent className="prose">
               {Array.isArray(post.body) && (
                 <PortableText value={post.body} components={components} />
               )}
               {/* <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p> */}
+              {post.literatura && (
+                <>
+                  <Izvor>Izvor:</Izvor>
+                  <ul>
+                    {post.literatura.map((item, index) =>
+                      item.link != null ? (
+                        <li key={index} style={{ display: "flex" }}>
+                          {index + 1}.&nbsp;
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.type}
+                          </a>
+                        </li>
+                      ) : (
+                        <li key={index} style={{ display: "flex" }}>
+                          {index + 1}.&nbsp; <div>{item.type}</div>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </>
+              )}
             </BlogContent>
           </main>
           {filteredData.length > 0 && (
@@ -411,7 +450,12 @@ export async function getStaticProps({ params }) {
   oldImage,
   newImage,
   publishedAt,
+  urlString,
   caption,
+    literatura[]{
+      type,
+      link
+    },
   "author": author->{
     _id,
     name,
