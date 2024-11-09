@@ -256,6 +256,7 @@ export const BlogContent = styled.div`
   li {
     font-style: italic;
     font-size: 16px;
+    margin-bottom: 10px;
   }
   @media only screen and (max-width: 1250px) {
   }
@@ -296,7 +297,7 @@ export const Caption = styled.div`
   font-style: italic;
   font-size: 12px;
   color: black;
-
+  font-family: Roboto;
   /* background: repeat center url("/laureana1b.png"); */
   @media only screen and (max-width: 1250px) {
   }
@@ -484,7 +485,6 @@ export const ImageCaption = styled.div`
   font-style: italic;
   font-size: 12px;
   color: black;
-  font-family: Montserrat;
   text-align: right;
   @media only screen and (max-width: 1250px) {
   }
