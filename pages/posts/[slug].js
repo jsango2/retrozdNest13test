@@ -36,6 +36,7 @@ import {
   WrapBlogCardsinBlogPost,
   Avatar,
   Izvor,
+  WrapLocationCaption,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
@@ -330,17 +331,19 @@ function BlogPost({ post, all_posts }) {
                   <div id="divider" className="divider"></div>
                 </div>
               )}
-              {post.caption && <Caption>{post.caption}</Caption>}
-              {post.urlString && (
-                <a href={post.urlString}>
-                  <PositionLink>
-                    <MapiconLocation>
-                      <GrMapLocation />{" "}
-                    </MapiconLocation>
-                    <CaptionUrl>Retro Zadar Pozicija</CaptionUrl>
-                  </PositionLink>
-                </a>
-              )}
+              <WrapLocationCaption>
+                {post.caption && <Caption>{post.caption}</Caption>}
+                {post.urlString && (
+                  <a href={post.urlString}>
+                    <PositionLink>
+                      <MapiconLocation>
+                        <GrMapLocation />{" "}
+                      </MapiconLocation>
+                      <CaptionUrl>Retro Zadar Pozicija</CaptionUrl>
+                    </PositionLink>
+                  </a>
+                )}
+              </WrapLocationCaption>
             </WrapOverlayBlock>
             <BlogContent className="prose">
               {Array.isArray(post.body) && (

@@ -24,6 +24,7 @@ export const WrapCard = styled.div`
   img {
     height: 230px;
     object-fit: cover;
+    width: 100%;
   }
   h2 {
     margin: 0px 20px 15px 20px;
@@ -83,7 +84,7 @@ export const WrapBlogCards = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 
   @media only screen and (max-width: 1250px) {
     height: auto;
@@ -109,6 +110,9 @@ export const WrapBlogCardsinBlogPost = styled.div`
   @media only screen and (max-width: 750px) {
     padding-bottom: 80px;
     flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    max-width: 430px;
   }
 `;
 
@@ -302,10 +306,12 @@ export const Caption = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    position: relative;
     bottom: unset;
-    top: 226px;
-    text-align: right;
-    width: 70%;
+    right: unset;
+    text-align: center;
+    width: 80%;
+
     /* right: 50%;
     transform: translate(50%, 0); */
   }
@@ -317,7 +323,6 @@ export const CaptionUrl = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
-    display: none;
   }
 `;
 export const PositionLink = styled.div`
@@ -334,6 +339,10 @@ export const PositionLink = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    margin-top: 10px;
     /* left: 50%;
     transform: translate(-50%, 20px); */
   }
@@ -358,6 +367,20 @@ export const WrapOverlayBlock = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    margin-bottom: 15px;
+  }
+`;
+export const WrapLocationCaption = styled.div`
+  position: relative;
+  margin-top: 10px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+    margin-bottom: 0;
   }
 `;
 export const ReadingTime = styled.div`

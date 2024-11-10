@@ -29,6 +29,7 @@ export const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   display: flex;
+
   align-items: center;
   justify-content: center;
   @media only screen and (max-width: 1250px) {
