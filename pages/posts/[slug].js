@@ -22,6 +22,7 @@ import {
   BlogContent,
   BlogTitle,
   Caption,
+  CopiedUrlText,
   CaptionUrl,
   PositionLink,
   WrapOverlayBlock,
@@ -31,6 +32,7 @@ import {
   VerticalLine,
   ReadingTimeBlog,
   TimeAmount,
+  WrapShareIcon,
   MoreBlogs,
   MoreBlogstitle,
   WrapBlogCardsinBlogPost,
@@ -46,6 +48,8 @@ import { useReadingTime } from "react-hook-reading-time";
 import { IoMdTime } from "react-icons/io";
 import BlogCard from "../../components/blogCard";
 import { GrMapLocation } from "react-icons/gr";
+import { IoShareSocialOutline } from "react-icons/io5";
+
 function BlogPost({ post, all_posts }) {
   const size = useWindowSize();
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -202,6 +206,15 @@ function BlogPost({ post, all_posts }) {
     );
     setFilteredData(filterWithoutSelf);
   }, []);
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const shareBlog = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    setCopySuccess(true);
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 1200);
+  };
 
   return (
     <>
@@ -302,12 +315,17 @@ function BlogPost({ post, all_posts }) {
               </AuthorBlog>
               <VerticalLine />
               <DateBlog>{formattedDate}</DateBlog>
-              <VerticalLine />
+              {/* <VerticalLine /> */}
 
-              <ReadingTimeBlog>
+              {/* <ReadingTimeBlog>
                 <IoMdTime />
                 <TimeAmount>{time.toFixed(0)} min</TimeAmount>
-              </ReadingTimeBlog>
+              </ReadingTimeBlog> */}
+              <VerticalLine />
+              <WrapShareIcon onClick={() => shareBlog()}>
+                <IoShareSocialOutline />
+                {copySuccess && <CopiedUrlText>Veza kopirana</CopiedUrlText>}
+              </WrapShareIcon>
             </WrapAuthorDate>
             <WrapOverlayBlock>
               {post.oldImage && (

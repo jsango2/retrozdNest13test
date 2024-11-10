@@ -95,6 +95,34 @@ export const WrapBlogCards = styled.div`
     flex-wrap: wrap;
   }
 `;
+export const WrapShareIcon = styled.div`
+  position: relative;
+  cursor: pointer;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 750px) {
+  }
+`;
+export const CopiedUrlText = styled.div`
+  position: absolute;
+  width: 125px;
+  top: -6px;
+  right: -130px;
+  font-size: 14px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+    top: -32px;
+    right: -60px;
+  }
+`;
 export const WrapBlogCardsinBlogPost = styled.div`
   position: relative;
   display: flex;
@@ -214,7 +242,7 @@ export const VerticalLine = styled.div`
   height: 14px;
   width: 1.5px;
   background-color: black;
-  margin: 0 14px;
+  margin: 0 8px;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
