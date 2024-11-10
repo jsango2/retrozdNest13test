@@ -388,6 +388,7 @@ function BlogPost({ post, all_posts }) {
                     author={post.author.name}
                     body={post.body}
                     title={post.title}
+                    date={post.publishedAt}
                   />
                 ))}
               </WrapBlogCardsinBlogPost>
