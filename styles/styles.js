@@ -302,6 +302,10 @@ export const Caption = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    bottom: unset;
+    top: 226px;
+    text-align: right;
+    width: 70%;
     /* right: 50%;
     transform: translate(50%, 0); */
   }
