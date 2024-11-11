@@ -135,6 +135,19 @@
   font-style: italic;
   font-size: 15px;
 }
+.blogLink {
+  position: absolute;
+  z-index: 30;
+  top: 150px;
+  right: 100px;
+  color: black;
+  background-color: white !important;
+  padding: 3px 12px;
+  border-radius: 6px !important;
+  font-style: normal;
+  font-size: 15px;
+  cursor: pointer;
+}
 .viseInfo {
   position: absolute;
   z-index: 30;
@@ -442,6 +455,13 @@
   }
   .fotoAutor {
     font-size: 11px;
+  }
+  .blogLink {
+    right: 50%;
+    transform: translate(50%, 0);
+    font-size: 11px;
+    text-align: center;
+    top: 25vh;
   }
   .edit {
     position: fixed;

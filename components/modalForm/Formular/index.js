@@ -36,6 +36,7 @@ import { dataBackup } from "../../../dataBackup.js";
 function Formular({ lng, lat, toggleModal, allData }) {
   const [mjesto, setMjesto] = useState("");
   const [autor, setAutor] = useState("");
+  const [blogLink, setBlogLink] = useState("");
   const [email, setEmail] = useState("");
   const [godina, setGodina] = useState("");
   const [poruka, setPoruka] = useState("");
@@ -203,6 +204,7 @@ function Formular({ lng, lat, toggleModal, allData }) {
         procjenaGodine: checked,
         autor: autor,
         fotoLayout: fotoLayout,
+        blogLink: blogLink,
         timestamp: Date.now(),
         id: uuid(),
       };
@@ -233,6 +235,7 @@ function Formular({ lng, lat, toggleModal, allData }) {
         Photo200px: largeImageurl,
         newPhoto: newPhotoURL,
         procjenaGodine: checked,
+        blogLink: blogLink,
         autor: autor,
         fotoLayout: fotoLayout,
         timestamp: Date.now(),
@@ -324,6 +327,9 @@ function Formular({ lng, lat, toggleModal, allData }) {
   };
   const handleAutor = (e) => {
     setAutor(e.target.value);
+  };
+  const handleBlogLink = (e) => {
+    setBlogLink(e.target.value);
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -525,6 +531,12 @@ function Formular({ lng, lat, toggleModal, allData }) {
               type="text"
               value={autor}
               onChange={(e) => handleAutor(e)}
+            />
+            <StyledLabel>Link bloga</StyledLabel>
+            <StyledInput
+              type="text"
+              value={blogLink}
+              onChange={(e) => handleBlogLink(e)}
             />
           </SmallBlock>
           <StyledLabel>

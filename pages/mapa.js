@@ -407,6 +407,7 @@ function Mapa({ data }) {
   const [lat, setLat] = useState(44.1139);
   const [lngLat, setLngLat] = useState(null);
   const [zoom, setZoom] = useState(14.04);
+  const [blogLink, setBlogLink] = useState("");
   const [hasPoints, setHasPoints] = useState(false);
   const [clickedOutside, setClickedOutside] = useState(false);
   const [isTouchDevice, setisTouchDevice] = useState(false);
@@ -515,6 +516,7 @@ function Mapa({ data }) {
         image_url_200px: doc.Photo200px,
         newPhoto: doc.newPhoto,
         title_naslov: doc.Title,
+        blogLink: doc.blogLink,
         longitude: doc.GPSLongitude,
         latitude: doc.GPSLatitude,
         procjenaGodine: doc.procjenaGodine,
@@ -849,8 +851,10 @@ function Mapa({ data }) {
                 var coordinates = feature.geometry.coordinates.slice();
                 setIdKliknuteFotke(feature.properties.id);
                 setFeaturesKliknuteFotke(feature.properties);
-
                 setPopupOn(true);
+                if (feature.properties.blogLink) {
+                  setBlogLink(feature.properties.blogLink);
+                }
 
                 if (feature.properties.newPhoto) {
                   popup2
@@ -997,6 +1001,7 @@ function Mapa({ data }) {
       });
       popup2.on("close", function () {
         setIsPointerInPopup(false);
+        setBlogLink("");
       });
 
       map.addSource("cities", {
@@ -1123,11 +1128,15 @@ function Mapa({ data }) {
         var coordinates = e.features[0].geometry.coordinates.slice();
         var feature = e.features[0];
         let timestamp = feature.properties.timeStamp;
-
+        if (feature.properties.blogLink) {
+          setBlogLink(feature.properties.blogLink);
+        }
         let now = Date.now();
         const razlika = now - timestamp;
         setIdKliknuteFotke(e.features[0].properties.id);
         setFeaturesKliknuteFotke(e.features[0].properties);
+        console.log(e.features[0].properties);
+
         // if (e.features[0].properties.newPhoto) {
         //   setHasNewPhoto(true);
         // } else {
@@ -1185,7 +1194,6 @@ function Mapa({ data }) {
                        ? feature.properties.autor
                        : "Nepoznat"
                    }</div>
-          
               </div>
 
               `
@@ -1696,6 +1704,11 @@ function Mapa({ data }) {
           <div className="admin" onClick={handleLogOut}>
             Logout
           </div>
+        )}
+        {blogLink != "" && (
+          <a href={blogLink} className="blogLink">
+            Saznaj više o ovoj fotografiji
+          </a>
         )}
         {/* {idKliknuteFotke !== null && (
         <div className="viseInfo">

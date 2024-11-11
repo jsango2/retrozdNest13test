@@ -31,6 +31,9 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 function Formular({ toggleEditModal, id, data, allData }) {
   const [mjesto, setMjesto] = useState(data.title_naslov);
   const [autor, setAutor] = useState(data.autor);
+  const [blogLink, setBlogLink] = useState(
+    data.blogLink != undefined ? data.blogLink : ""
+  );
   const [email, setEmail] = useState("");
   const [godina, setGodina] = useState(data.datum_uploada);
   const [poruka, setPoruka] = useState("");
@@ -74,6 +77,7 @@ function Formular({ toggleEditModal, id, data, allData }) {
       newPhoto: newPhotoURL,
       procjenaGodine: checked,
       autor: autor,
+      blogLink: blogLink,
       fotoLayout: data.fotoLayout,
       timestamp: Date.now(),
       id: data.id,
@@ -81,6 +85,7 @@ function Formular({ toggleEditModal, id, data, allData }) {
     (allData[objIndex].Title = mjesto),
       (allData[objIndex].DateCreated = godina),
       (allData[objIndex].autor = autor),
+      (allData[objIndex].blogLink = blogLink),
       checked === undefined
         ? (allData[objIndex].procjenaGodine = false)
         : (allData[objIndex].procjenaGodine = checked);
@@ -301,6 +306,9 @@ function Formular({ toggleEditModal, id, data, allData }) {
   const handleAutor = (e) => {
     setAutor(e.target.value);
   };
+  const handleBlogLink = (e) => {
+    setBlogLink(e.target.value);
+  };
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -489,6 +497,12 @@ function Formular({ toggleEditModal, id, data, allData }) {
               type="text"
               value={autor}
               onChange={(e) => handleAutor(e)}
+            />
+            <StyledLabel>Link Bloga</StyledLabel>
+            <StyledInput
+              type="text"
+              value={blogLink}
+              onChange={(e) => handleBlogLink(e)}
             />
           </SmallBlock>
           <StyledLabel>

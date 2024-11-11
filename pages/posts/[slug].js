@@ -206,8 +206,9 @@ function BlogPost({ post, all_posts }) {
     );
     setFilteredData(filterWithoutSelf);
   }, []);
-  const [copySuccess, setCopySuccess] = useState(false);
 
+  //funkcija za copy share url
+  const [copySuccess, setCopySuccess] = useState(false);
   const shareBlog = async () => {
     await navigator.clipboard.writeText(window.location.href);
     setCopySuccess(true);
@@ -398,7 +399,7 @@ function BlogPost({ post, all_posts }) {
           {filteredData.length > 0 && (
             <MoreBlogs>
               <MoreBlogstitle>Slične teme</MoreBlogstitle>
-              <WrapBlogCardsinBlogPost>
+              <WrapBlogCardsinBlogPost filtereddata={filteredData}>
                 {filteredData.map((post) => (
                   <BlogCard
                     key={post._id}
