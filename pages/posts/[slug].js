@@ -55,7 +55,7 @@ function BlogPost({ post, all_posts }) {
   const [isTouchDevice, setisTouchDevice] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
 
-  console.log("Trenutni post", post);
+  // console.log("Trenutni post", post);
 
   //   console.log(post);
   const dateStr = post.publishedAt;
@@ -205,7 +205,7 @@ function BlogPost({ post, all_posts }) {
       (singlePost) => singlePost.title != post.title
     );
     setFilteredData(filterWithoutSelf);
-  }, []);
+  }, [all_posts]);
 
   //funkcija za copy share url
   const [copySuccess, setCopySuccess] = useState(false);
@@ -297,7 +297,7 @@ function BlogPost({ post, all_posts }) {
               ← Vrati se na postove
             </Link>
 
-            <BlogTitle className="md:text-3xl xl:text-5xl font-bold mb-8 text-black">
+            <BlogTitle className="md:text-5xl xl:text-7xl font-bold mb-8 text-black">
               {post.title}
             </BlogTitle>
             <WrapAuthorDate>

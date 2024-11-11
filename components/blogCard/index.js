@@ -74,7 +74,7 @@ const BlogCard = ({
     time, // 0.5309090909090909
   } = useReadingTime(filteredBlock.join(" "));
   return (
-    <a href={`/posts/${link}`}>
+    <Link href={`/posts/${link}`}>
       <WrapCard>
         <img
           src={urlFor(image).width(800).url()}
@@ -96,7 +96,7 @@ const BlogCard = ({
         </Author>
         <BlogDate>{formattedDate}</BlogDate>
       </WrapCard>
-    </a>
+    </Link>
   );
 };
 

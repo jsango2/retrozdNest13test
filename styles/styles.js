@@ -297,13 +297,14 @@ export const BlogContent = styled.div`
 `;
 export const BlogTitle = styled.div`
   position: relative;
-  font-family: "Roboto", serif;
+  font-family: "Garamond", serif;
+  color: #3f230f;
   margin-bottom: 0;
   margin-top: 10px;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 450px) {
-    font-size: 26px;
+    font-size: 28px;
     line-height: normal;
   }
 `;
@@ -560,7 +561,7 @@ export const MoreBlogstitle = styled.div`
   position: relative;
   position: relative;
 
-  font-size: 55px;
+  font-size: 45px;
   font-family: "Garamond";
   font-weight: 700;
   color: #3f230f;

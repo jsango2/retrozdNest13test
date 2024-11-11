@@ -35,7 +35,6 @@ import BlogCard from "../components/blogCard";
 function Blog({ data, tagData }) {
   const [selectedTag, setSelectedTag] = useState("Svi");
   const [filteredData, setFilteredData] = useState([]);
-  console.log(data);
   const sortByDate = data.sort(
     (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
   );
