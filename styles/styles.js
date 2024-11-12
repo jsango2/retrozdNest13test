@@ -338,7 +338,7 @@ export const Caption = styled.div`
     position: relative;
     bottom: unset;
     right: unset;
-    text-align: center;
+    text-align: right;
     width: 80%;
 
     /* right: 50%;
@@ -405,11 +405,12 @@ export const WrapLocationCaption = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
     margin-bottom: 0;
+    padding-right: 20px;
   }
 `;
 export const ReadingTime = styled.div`
