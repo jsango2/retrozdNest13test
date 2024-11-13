@@ -293,7 +293,10 @@ function BlogPost({ post, all_posts }) {
           property="twitter:url"
           content={`https://www.retrozadar.com/posts/${post.slug.current}`}
         />
-        <meta name="twitter:title" content={post.title} />
+        <meta
+          name="twitter:title"
+          content={`Retro Zadar Blog - ${post.title}`}
+        />
         <meta name="twitter:description" content={post.kratkiOpis} />
         <meta name="twitter:image" content="https://retrozadar.com/og2.png" />
       </Head>{" "}

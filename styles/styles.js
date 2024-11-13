@@ -304,7 +304,7 @@ export const BlogTitle = styled.div`
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 450px) {
-    font-size: 28px;
+    font-size: 36px;
     line-height: normal;
   }
 `;
