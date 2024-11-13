@@ -98,7 +98,17 @@ function BlogPost({ post, all_posts }) {
       h4: ({ children }) => (
         <h4 className="text-2xl font-bold my-3 mt-8 H4">{children}</h4>
       ),
-
+      blockquote: ({ children }) => (
+        <blockquote
+          style={{
+            fontStyle: "italic",
+            borderLeft: "4px solid #ddd",
+            paddingLeft: "10px",
+          }}
+        >
+          {children}
+        </blockquote>
+      ),
       normal: ({ children }) => <p className="my-2 mt-4">{children}</p>,
     },
     marks: {

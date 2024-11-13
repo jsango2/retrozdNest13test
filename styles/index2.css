@@ -140,6 +140,9 @@
   object-fit: contain !important;
   background-color: #f2e3d0 !important;
 }
+.blockquoteBlog {
+  font-style: italic;
+}
 .blogLink {
   position: absolute;
   z-index: 30;
