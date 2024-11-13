@@ -102,8 +102,8 @@ function BlogPost({ post, all_posts }) {
         <blockquote
           style={{
             fontStyle: "italic",
-            borderLeft: "4px solid #ddd",
-            paddingLeft: "10px",
+            borderLeft: "4px solid #f3dfc6",
+            paddingLeft: "20px",
           }}
         >
           {children}
