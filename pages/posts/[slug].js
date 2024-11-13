@@ -228,7 +228,7 @@ function BlogPost({ post, all_posts }) {
         <title>{post.title}</title>
         <meta
           property="og:title"
-          content={`Retro Zadar Blog -${post.title}`}
+          content={`Retro Zadar Blog - ${post.title}`}
           key="title"
         />
         <link
