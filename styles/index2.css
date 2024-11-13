@@ -135,6 +135,11 @@
   font-style: italic;
   font-size: 15px;
 }
+.imgInBlog1,
+.imgInBlog2 {
+  object-fit: contain !important;
+  background-color: #f2e3d0 !important;
+}
 .blogLink {
   position: absolute;
   z-index: 30;

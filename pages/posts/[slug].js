@@ -297,7 +297,7 @@ function BlogPost({ post, all_posts }) {
               ← Vrati se na postove
             </Link>
 
-            <BlogTitle className="md:text-5xl xl:text-7xl font-bold mb-8 text-black">
+            <BlogTitle className="md:text-5xl xl:text-7xl font-bold mb-8 text-black ">
               {post.title}
             </BlogTitle>
             <WrapAuthorDate>
@@ -339,19 +339,25 @@ function BlogPost({ post, all_posts }) {
                   <img
                     src={urlFor(post.oldImage).width(750).url()}
                     alt={post.oldImage.alt || "Sanity Image"}
-                    className="img3"
+                    className="img3 imgInBlog1"
                   />
                   <img
                     src={urlFor(post.newImage).width(750).url()}
                     alt={post.newImage.alt || "Sanity Image"}
-                    className="img4"
+                    className="img4 imgInBlog2"
                   />
                   <div id="activator" className="activator"></div>
                   <div id="divider" className="divider"></div>
                 </div>
               )}
               <WrapLocationCaption>
-                {post.caption && <Caption>{post.caption}</Caption>}
+                {post.caption && (
+                  <Caption
+                    dangerouslySetInnerHTML={{
+                      __html: post.caption,
+                    }}
+                  ></Caption>
+                )}
                 {post.urlString && (
                   <a href={post.urlString}>
                     <PositionLink>
