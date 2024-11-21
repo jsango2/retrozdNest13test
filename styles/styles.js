@@ -308,6 +308,14 @@ export const BlogTitle = styled.div`
     line-height: normal;
   }
 `;
+export const WrapShareIcons = styled.div`
+  position: relative;
+  margin-top: 40px;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 450px) {
+  }
+`;
 export const BlogBackground = styled.div`
   position: absolute;
   top: 0;

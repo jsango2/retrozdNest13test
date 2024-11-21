@@ -14,6 +14,14 @@ import { PortableText } from "@portabletext/react";
 
 import { urlFor } from "../../lib/sanity/fetchImg";
 import React, { useEffect, useState } from "react";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  WhatsappShareButton,
+  EmailIcon,
+  FacebookIcon,
+  WhatsappIcon,
+} from "react-share";
 
 import {
   AuthorBlog,
@@ -39,6 +47,7 @@ import {
   Avatar,
   Izvor,
   WrapLocationCaption,
+  WrapShareIcons,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
@@ -53,6 +62,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 function BlogPost({ post, all_posts }) {
   const size = useWindowSize();
   const [isTouchDevice, setisTouchDevice] = useState(false);
+  const [socialUrl, setSocialUrl] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   // console.log("Trenutni post", post);
@@ -205,6 +215,7 @@ function BlogPost({ post, all_posts }) {
     //       }
     //     });
     // }
+    setSocialUrl(window.location.href);
   }, []);
 
   useEffect(() => {
@@ -221,6 +232,7 @@ function BlogPost({ post, all_posts }) {
   const [copySuccess, setCopySuccess] = useState(false);
   const shareBlog = async () => {
     await navigator.clipboard.writeText(window.location.href);
+    setSocialUrl(window.location.href);
     setCopySuccess(true);
     setTimeout(() => {
       setCopySuccess(false);
@@ -387,6 +399,27 @@ function BlogPost({ post, all_posts }) {
               {Array.isArray(post.body) && (
                 <PortableText value={post.body} components={components} />
               )}
+              <WrapShareIcons>
+                Podijeli priču:
+                <div style={{ marginTop: "10px" }}>
+                  <FacebookShareButton url={socialUrl} hashtag="RetroZadar">
+                    {" "}
+                    <FacebookIcon
+                      size={32}
+                      round={true}
+                      // style={{ cursor: "pointer" }}
+                      style={{ filter: "grayscale(100%)" }}
+                    />
+                  </FacebookShareButton>
+                  <WhatsappShareButton url={socialUrl}>
+                    <WhatsappIcon
+                      size={32}
+                      round={true}
+                      style={{ marginLeft: "10px", filter: "grayscale(100%)" }}
+                    />
+                  </WhatsappShareButton>
+                </div>
+              </WrapShareIcons>
               {/* <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p> */}
               {post.literatura && (
                 <>
