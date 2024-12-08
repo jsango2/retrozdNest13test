@@ -545,6 +545,8 @@ export const ImageCaption = styled.div`
   /* right: 0; */
   margin-left: auto;
   margin-right: 15px;
+  margin-bottom: 18px;
+  margin-top: 10px;
   /* bottom: 0; */
   width: fit-content;
   font-style: italic;

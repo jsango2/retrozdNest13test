@@ -82,16 +82,48 @@ function BlogPost({ post, all_posts }) {
   const formattedDate = `${day}/${month}/${year}`;
   const components = {
     types: {
+      // videoEmbed: ({ value }) => {
+      //   if (!value?.url) return null;
+      //   return (
+      //     <div className="video-embed">
+      //       <iframe
+      //         src={value.url}
+      //         title="Video Embed"
+      //         frameBorder="0"
+      //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      //         allowFullScreen
+      //       />
+      //     </div>
+      //   );
+      // },
+      // videoFile: ({ value }) => {
+      //   const fileUrl = value.file?.asset?._ref
+      //     ? `https://cdn.sanity.io/files/yourProjectId/production/${
+      //         value.file.asset._ref.split("-")[1]
+      //       }.${value.file.asset._ref.split("-")[2]}`
+      //     : null;
+
+      //   if (!fileUrl) return null;
+
+      //   return (
+      //     <div className="video-file">
+      //       <video controls>
+      //         <source src={fileUrl} type="video/mp4" />
+      //         Your browser does not support the video tag.
+      //       </video>
+      //     </div>
+      //   );
+      // },
       image: ({ value }) =>
         value && (
-          <>
+          <div className="blogImageCaption">
             <img
               src={urlFor(value).width(800).url()}
               alt={value.alt || "Sanity Image"}
-              className="my-4 rounded-lg mb-3"
+              className="my-4 rounded-lg mb-2 blogImage"
             />
             <ImageCaption>{value.caption}</ImageCaption>
-          </>
+          </div>
         ),
       // Optionally, add serializers for other custom Sanity blocks here
     },
@@ -120,6 +152,7 @@ function BlogPost({ post, all_posts }) {
         </blockquote>
       ),
       normal: ({ children }) => <p className="my-2 mt-4">{children}</p>,
+      article: ({ children }) => <p className="blogArticle">{children}</p>,
     },
     marks: {
       link: ({ value, children }) => (

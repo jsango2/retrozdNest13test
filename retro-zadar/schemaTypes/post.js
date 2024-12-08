@@ -122,7 +122,6 @@ export default defineType({
       name: 'kratkiOpis',
       title: 'Kratki opis',
       type: 'text',
-      validation: (Rule) => Rule.max(170).warning('Maksimalni broj znakova je 170'),
     }),
   ],
 

@@ -1135,7 +1135,6 @@ function Mapa({ data }) {
         const razlika = now - timestamp;
         setIdKliknuteFotke(e.features[0].properties.id);
         setFeaturesKliknuteFotke(e.features[0].properties);
-        console.log(e.features[0].properties);
 
         // if (e.features[0].properties.newPhoto) {
         //   setHasNewPhoto(true);

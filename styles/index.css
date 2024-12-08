@@ -191,6 +191,19 @@ p {
   height: 100%;
   margin: 0 auto;
 }
+.blogArticle {
+  background-color: #e4d4ad;
+  padding: 20px;
+}
+.blogImageCaption {
+  position: relative;
+  width: fit-content;
+  margin: 15px auto;
+}
+.blogImage {
+  max-height: 450px;
+  margin: 0 auto;
+}
 
 .blogBackground {
   background-color: #f8efe3;

@@ -29,6 +29,7 @@ export default defineType({
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'},
+        {title: 'Squared', value: 'squared'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
       // Marks let you mark up inline text in the block editor.
@@ -77,6 +78,39 @@ export default defineType({
           title: 'Alternative Text',
           options: {
             isHighlighted: true, // Makes the alt field more accessible
+          },
+        },
+      ],
+    }),
+    defineArrayMember({
+      name: 'videoEmbed',
+      title: 'Video Embed',
+      type: 'object',
+      fields: [
+        {
+          name: 'url',
+          title: 'Video URL',
+          type: 'url',
+          description: 'Paste the video URL (e.g., YouTube, Vimeo)',
+          validation: (Rule) =>
+            Rule.uri({
+              allowRelative: false,
+              scheme: ['http', 'https'],
+            }),
+        },
+      ],
+    }), // For embedded videos
+    defineArrayMember({
+      name: 'videoFile',
+      title: 'Video File',
+      type: 'object',
+      fields: [
+        {
+          name: 'file',
+          title: 'Video File',
+          type: 'file',
+          options: {
+            accept: 'video/*', // Only allow video files
           },
         },
       ],
