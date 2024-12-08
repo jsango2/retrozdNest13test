@@ -199,10 +199,12 @@ p {
   position: relative;
   width: fit-content;
   margin: 15px auto;
+  max-width: 700px;
 }
 .blogImage {
-  max-height: 450px;
+  height: auto;
   margin: 0 auto;
+  max-height: 500px;
 }
 
 .blogBackground {
