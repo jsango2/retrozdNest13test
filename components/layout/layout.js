@@ -10,6 +10,7 @@ import {
   WrapLinks,
   WrapLink,
   WrapApp,
+  Underline,
 } from "./styles";
 import Footer from "../Footer";
 
@@ -29,10 +30,15 @@ const Layout = ({ children, isMap }) => {
           </Link>
           <WrapLinks>
             <Link href="/blog">
-              <WrapLink>Blog</WrapLink>
+              <WrapLink>
+                Blog <Underline />
+              </WrapLink>
             </Link>
             <Link href="/mapa">
-              <WrapLink>Mapa</WrapLink>
+              <WrapLink>
+                Mapa
+                <Underline />
+              </WrapLink>
             </Link>
           </WrapLinks>
         </Container>

@@ -82,7 +82,7 @@ export const WrapBlogCards = styled.div`
   position: relative;
   display: flex;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 50px auto;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -296,11 +296,12 @@ export const Text = styled.div`
   font-size: 16px;
   text-align: center;
   max-width: 600px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 60px auto;
 
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {
+    margin: 0 auto 30px auto;
   }
 `;
 export const Izvor = styled.div`

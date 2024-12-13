@@ -88,6 +88,24 @@ export const WrapLink = styled.div`
   /* font-style: bold;
   font-weight: 700; */
   /* text-shadow: 0px 2px 11px #0000006e; */
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 720px) {
+    font-size: 20px;
+  }
+`;
+export const Underline = styled.div`
+  position: absolute;
+  height: 3px;
+  width: 0%;
+  background-color: #3f230f;
+  bottom: 0;
+  transition: all 0.4s ease-in-out;
+
+  ${WrapLink}:hover & {
+    width: 100%;
+  }
+
   @media screen and (max-width: 720px) {
     font-size: 20px;
   }
