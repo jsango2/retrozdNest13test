@@ -170,6 +170,7 @@ function Blog({ data, tagData }) {
                   .slice(0, 1)
                   .map((post) => (
                     <FeaturedBlogCard
+                      isFeatured
                       key={post._id}
                       link={post.slug.current}
                       image={post.mainImage}
@@ -184,7 +185,7 @@ function Blog({ data, tagData }) {
             </WrapFeaturedBlog>
             <WrapBlogCards>
               {filteredData.map((post) => (
-                <BlogCard
+                <FeaturedBlogCard
                   key={post._id}
                   link={post.slug.current}
                   image={post.mainImage}

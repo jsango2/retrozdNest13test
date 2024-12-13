@@ -20,24 +20,34 @@ export const WrapCard = styled.div`
   font-style: normal;
   z-index: 10;
   width: 90%;
-  height: 100%;
+  /* height: 400px; */
+  height: ${(props) => (props.isFeatured === true ? "400px" : "350px")};
+
   display: flex;
   flex-direction: row;
   cursor: pointer;
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0;
-  background-color: #f8f4ee;
-  border-radius: 20px;
+
+  background-color: ${(props) =>
+    props.isFeatured === true ? "#e0c7a07a" : "#f8f4ee"};
+
+  border-radius: 10px;
   overflow: hidden;
   margin: 20px 10px;
-  -webkit-box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
-  -moz-box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
-  box-shadow: 10px 10px 51px -28px rgba(158, 156, 158, 1);
+  -webkit-box-shadow: 10px 10px 51px -28px #453109a8;
+  -moz-box-shadow: 10px 10px 51px -28px #453109a8;
+  box-shadow: 10px 10px 51px -28px #453109a8;
+
+  transition: all 0.5s ease-in-out;
+  opacity: ${(props) => (props.inView === true ? "1" : "0")};
+  transform: ${(props) =>
+    props.inView === true ? "translate(0,0)" : "translate(0,20px)"};
   img {
     height: 100%;
     object-fit: cover;
-    width: 50%;
+    width: 100%;
   }
   h2 {
     margin: 0px 20px 15px 20px;
@@ -51,14 +61,15 @@ export const WrapCard = styled.div`
     color: black;
     font-weight: 400;
   }
-  transition: transform 0.4s ease-in-out;
   &:hover {
     transform: scale(1.02);
   }
   @media only screen and (max-width: 750px) {
+    min-height: 500px;
+    height: auto;
     flex-direction: column;
     img {
-      height: 50%;
+      height: 100%;
       object-fit: cover;
       width: 100%;
     }
@@ -85,9 +96,13 @@ export const WrapData = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding-top: 20px;
+  padding-left: 20px;
   @media only screen and (max-width: 750px) {
     width: 100%;
-    height: 600px;
+
+    height: auto;
+    padding-bottom: 50px;
+    padding-left: 0px;
   }
   @media only screen and (max-width: 550px) {
     padding-top: 0px;
@@ -106,10 +121,26 @@ export const Container = styled.div`
     padding: 0 10px;
   }
 `;
+export const WrapImage = styled.div`
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: ${(props) => `url(${props.img})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 750px) {
+    min-height: 250px;
+    height: 50%;
+    width: 100%;
+  }
+`;
 export const Author = styled.div`
   position: absolute;
   bottom: 15px;
-  left: 20px;
+  right: 120px;
   color: grey;
   font-size: 14px;
   display: flex;
@@ -120,7 +151,9 @@ export const Author = styled.div`
   }
   @media only screen and (max-width: 1250px) {
   }
-  @media only screen and (max-width: 550px) {
+  @media only screen and (max-width: 750px) {
+    right: unset;
+    left: 15px;
   }
 `;
 export const BlogDate = styled.div`

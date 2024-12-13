@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   Container,
   HeaderWrap,
+  HeaderBackground,
   WrapLogo,
   WrapLinks,
   WrapLink,
@@ -24,6 +25,7 @@ const Layout = ({ children, isMap }) => {
       {/* <Header siteTitle={`Title`} /> */}
 
       <HeaderWrap isMap={isMap}>
+        <HeaderBackground />
         <Container>
           <Link href="/">
             <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>

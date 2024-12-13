@@ -26,7 +26,6 @@ import {
 import {
   AuthorBlog,
   DateBlog,
-  BlogBackground,
   BlogContent,
   BlogTitle,
   Caption,
@@ -48,6 +47,7 @@ import {
   Izvor,
   WrapLocationCaption,
   WrapShareIcons,
+  BlogBackground,
 } from "../../styles/styles";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
@@ -347,6 +347,7 @@ function BlogPost({ post, all_posts }) {
       </Head>{" "}
       <Layout isMap={false}>
         <div className="blogBackground">
+          <BlogBackground />
           {/* <BlogBackground>
           <Image src="/laureana1b.png" layout="fill" objectFit="cover" />
         </BlogBackground> */}

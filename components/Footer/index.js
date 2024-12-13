@@ -4,11 +4,18 @@
 
 import Link from "next/link";
 import { WrapFooter, FooterText, ContainerFooter } from "./styles";
-import { Container, WrapLink, WrapLinks, WrapLogo } from "../layout/styles";
+import {
+  Container,
+  HeaderBackground,
+  WrapLink,
+  WrapLinks,
+  WrapLogo,
+} from "../layout/styles";
 
 const Footer = ({ isMap }) => {
   return (
     <WrapFooter isMap={isMap}>
+      <HeaderBackground />
       <ContainerFooter>
         <Link href="/">
           <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>

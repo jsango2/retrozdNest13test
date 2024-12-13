@@ -16,7 +16,28 @@ export const HeaderWrap = styled.div`
   height: 100px;
   /* background-color: #f8efe3; */
   border-bottom: 1px solid #80808036;
+  /* opacity: 0.18; */
+  z-index: 2;
+  background-color: #f8efe3;
 
+  /* background: repeat center url("/1540.jpg"); */
+  @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 750px) {
+    height: ${(props) => (props.isMap ? "60px" : "70px")};
+  }
+`;
+export const HeaderBackground = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-color: #f8efe3; */
+  border-bottom: 1px solid #80808036;
+  opacity: 0.2;
+  background-color: #f8efe3;
+  z-index: 1;
+  background: repeat center url("/1540.jpg");
+  top: 0;
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 750px) {

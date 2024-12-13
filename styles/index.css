@@ -208,6 +208,7 @@ p {
 }
 
 .blogBackground {
+  position: relative;
   background-color: #f8efe3;
   padding-top: 100px;
   min-height: 100vh;

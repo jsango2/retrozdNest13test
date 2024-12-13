@@ -37,7 +37,7 @@ export const WrapCard = styled.div`
     color: black;
     font-weight: 400;
   }
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.8s ease-in-out;
   &:hover {
     transform: scale(1.02);
   }
@@ -131,8 +131,8 @@ export const BackgroundFeaturedBlog = styled.div`
     width: 100vw;
     height: 100%;
     top: 0px;
-    left: -30px;
-    background-color: #d8c8ae5e;
+    left: -20px;
+    background-color: #d6b17529;
   }
   @media only screen and (max-width: 550px) {
   }
@@ -236,7 +236,7 @@ export const WrapFeaturedBlog = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 750px) {
-    height: 650px;
+    height: auto;
     padding: 30px 0;
   }
   @media only screen and (max-width: 550px) {
@@ -354,10 +354,10 @@ export const BlogBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.05;
+  opacity: 0.12;
   background-color: #f8efe3;
 
-  /* background: repeat center url("/laureana1b.png"); */
+  background: repeat center url("/1540.jpg");
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 550px) {

@@ -23,8 +23,8 @@ import { RiQuillPenLine } from "react-icons/ri";
 // import { Helmet } from "react-helmet";
 
 import { useReadingTime } from "react-hook-reading-time";
-import { Author, BlogDate, WrapCard, WrapData } from "./styles";
-
+import { Author, BlogDate, WrapCard, WrapData, WrapImage } from "./styles";
+import { useInView } from "react-intersection-observer";
 const FeaturedBlogCard = ({
   link,
   image,
@@ -34,6 +34,7 @@ const FeaturedBlogCard = ({
   body,
   title,
   date,
+  isFeatured,
 }) => {
   // console.log(post);
   const dateStr = date;
@@ -48,7 +49,7 @@ const FeaturedBlogCard = ({
 
   // Format as dd/mm/yyyy
   const formattedDate = `${day}/${month}/${year}`;
-  function truncateSentence(text, maxLength = 340) {
+  function truncateSentence(text, maxLength = 240) {
     if (text.length <= maxLength) return text; // Return original if within limit
 
     // Trim the text to maxLength and look for the last space before the cut
@@ -72,30 +73,38 @@ const FeaturedBlogCard = ({
     words, // 168
     time, // 0.5309090909090909
   } = useReadingTime(filteredBlock.join(" "));
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.1,
+    triggerOnce: true,
+  });
   return (
     <Link href={`/posts/${link}`}>
-      <WrapCard>
-        <img
-          src={urlFor(image).width(800).url()}
-          alt={alt || "Sanity Image"}
-          className="rounded-lg"
-        />
+      <WrapCard ref={ref} inView={inView} isFeatured={isFeatured}>
+        <WrapImage img={urlFor(image).width(800).url()} className="rounded-lg">
+          {/* <img
+            src={urlFor(image).width(800).url()}
+            alt={alt || "Sanity Image"}
+            className="rounded-lg"
+          /> */}
+        </WrapImage>
         <WrapData>
           {/* <ReadingTime>
           <IoMdTime />
           <TimeAmount>{time.toFixed(0)} min</TimeAmount>
         </ReadingTime> */}
           <h2 style={{ marginTop: "20px" }}>{title}</h2>
-          <p>{truncateSentence(kratkiOpis)}</p>
+          <p>{truncateSentence(kratkiOpis)}...</p>
           {/* <WrapTags>
         {post.tags &&
           post.tags.map((tag) => <Tag>{tag.title}</Tag>)}
       </WrapTags> */}
-          <Author>
-            <RiQuillPenLine /> {author}
-          </Author>
-          <BlogDate>{formattedDate}</BlogDate>
         </WrapData>
+        <Author>
+          <RiQuillPenLine /> {author}
+        </Author>
+        <BlogDate>{formattedDate}</BlogDate>
       </WrapCard>
     </Link>
   );
