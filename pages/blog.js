@@ -23,6 +23,8 @@ import {
   Text,
   Author,
   BlogBackground,
+  WrapFeaturedBlog,
+  BackgroundFeaturedBlog,
   ReadingTime,
   WrapTagCloud,
   SingleTag,
@@ -32,9 +34,11 @@ import Image from "next/image";
 import Head from "next/head";
 
 import BlogCard from "../components/blogCard";
+import FeaturedBlogCard from "../components/featuredBlogCard";
 function Blog({ data, tagData }) {
   const [selectedTag, setSelectedTag] = useState("Svi");
   const [filteredData, setFilteredData] = useState([]);
+  const [featuredBlogs, setFeaturedBlogs] = useState([]);
   const sortByDate = data.sort(
     (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
   );
@@ -51,7 +55,7 @@ function Blog({ data, tagData }) {
       // Optionally, add serializers for other custom Sanity blocks here
     },
   };
-  // console.log(data);
+  console.log(data);
   // console.log({ tagData });
 
   useEffect(() => {
@@ -67,8 +71,10 @@ function Blog({ data, tagData }) {
             )
         )
       );
-  }, [selectedTag]);
 
+    setFeaturedBlogs(sortByDate.filter((blog) => blog.isBlogFeatured));
+  }, [selectedTag]);
+  console.log("Feature", featuredBlogs);
   return (
     <>
       <Head>
@@ -143,7 +149,7 @@ function Blog({ data, tagData }) {
               Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i
               zaboravljene kutke koji oživljavaju duh prošlih vremena.
             </Text>
-            <WrapTagCloud>
+            {/* <WrapTagCloud>
               <SingleTag onClick={() => setSelectedTag("Svi")}>Svi</SingleTag>
               {tagData.map((tag) => (
                 <SingleTag
@@ -153,7 +159,26 @@ function Blog({ data, tagData }) {
                   {tag.title}
                 </SingleTag>
               ))}
-            </WrapTagCloud>
+            </WrapTagCloud> */}
+            <WrapFeaturedBlog>
+              <BackgroundFeaturedBlog />
+              {featuredBlogs.length > 0 &&
+                featuredBlogs
+                  .slice(0, 1)
+                  .map((post) => (
+                    <FeaturedBlogCard
+                      key={post._id}
+                      link={post.slug.current}
+                      image={post.mainImage}
+                      alt={post.mainImage.alt}
+                      kratkiOpis={post.kratkiOpis}
+                      author={post.author.name}
+                      body={post.body}
+                      title={post.title}
+                      date={post.publishedAt}
+                    />
+                  ))}
+            </WrapFeaturedBlog>
             <WrapBlogCards>
               {filteredData.map((post) => (
                 <BlogCard
@@ -183,6 +208,7 @@ export async function getStaticProps() {
   _id,
   title,
   slug,
+  isBlogFeatured,
   body,
   kratkiOpis,
   "author": author->{

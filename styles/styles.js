@@ -82,7 +82,7 @@ export const WrapBlogCards = styled.div`
   position: relative;
   display: flex;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -91,6 +91,8 @@ export const WrapBlogCards = styled.div`
     padding-bottom: 100px;
   }
   @media only screen and (max-width: 750px) {
+    margin: 0px auto;
+
     padding-bottom: 80px;
     flex-wrap: wrap;
   }
@@ -121,6 +123,18 @@ export const CopiedUrlText = styled.div`
   @media only screen and (max-width: 550px) {
     top: -32px;
     right: -60px;
+  }
+`;
+export const BackgroundFeaturedBlog = styled.div`
+  @media only screen and (max-width: 750px) {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0px;
+    left: -30px;
+    background-color: #d8c8ae;
+  }
+  @media only screen and (max-width: 550px) {
   }
 `;
 export const WrapBlogCardsinBlogPost = styled.div`
@@ -207,6 +221,23 @@ export const AuthorBlog = styled.div`
   display: flex;
   align-items: center;
   @media only screen and (max-width: 1250px) {
+  }
+  @media only screen and (max-width: 550px) {
+  }
+`;
+export const WrapFeaturedBlog = styled.div`
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  height: 400px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: 750px) {
+    height: 650px;
+    padding: 30px 0;
   }
   @media only screen and (max-width: 550px) {
   }

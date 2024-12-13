@@ -65,7 +65,7 @@ function BlogPost({ post, all_posts }) {
   const [socialUrl, setSocialUrl] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  // console.log("Trenutni post", post);
+  console.log("Trenutni post", post);
 
   //   console.log(post);
   const dateStr = post.publishedAt;
@@ -523,6 +523,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const ALL_POSTS_QUERY = `*[_type == "post" ] {
     _id,
+    isBlogfeatured,
     title,
     slug,
     body,
@@ -552,6 +553,7 @@ export async function getStaticProps({ params }) {
   _id,
   title,
   slug,
+  isBlogFeatured,
   body,
   kratkiOpis,
   mainImage,
