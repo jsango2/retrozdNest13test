@@ -54,7 +54,7 @@ export const WrapCard = styled.div`
 export const BlogSectionTitle = styled.div`
   position: relative;
 
-  font-size: 75px;
+  font-size: 97px;
   font-family: "Garamond";
   font-weight: 700;
   color: #3f230f;

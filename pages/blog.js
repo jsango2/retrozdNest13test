@@ -147,7 +147,7 @@ function Blog({ data, tagData }) {
         <div className="blogBackground">
           <WrapBlogSection>
             <BlogBackground></BlogBackground>
-            <BlogSectionTitle>Retro Zadar Priče</BlogSectionTitle>
+            <BlogSectionTitle>Priče o Zadru</BlogSectionTitle>
             <Text>
               Otkrijte nostalgičnu stranu grada Zadra kroz priče, sjećanja i
               zaboravljene kutke koji oživljavaju duh prošlih vremena.
