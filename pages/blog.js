@@ -42,6 +42,9 @@ function Blog({ data, tagData }) {
   const sortByDate = data.sort(
     (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
   );
+  const sortByDateWithoutFeatured = sortByDate.filter(
+    (blog) => blog.isBlogFeatured !== true
+  );
   const components = {
     types: {
       image: ({ value }) =>
@@ -60,10 +63,10 @@ function Blog({ data, tagData }) {
 
   useEffect(() => {
     if (selectedTag === "Svi") {
-      setFilteredData(data);
+      setFilteredData(sortByDateWithoutFeatured);
     } else
       setFilteredData(
-        sortByDate.filter(
+        sortByDateWithoutFeatured.filter(
           (item) =>
             item.tags &&
             item.tags.some((tag) =>
