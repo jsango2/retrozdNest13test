@@ -132,7 +132,7 @@ export const BackgroundFeaturedBlog = styled.div`
     height: 100%;
     top: 0px;
     left: -30px;
-    background-color: #d8c8ae;
+    background-color: #d8c8ae5e;
   }
   @media only screen and (max-width: 550px) {
   }
