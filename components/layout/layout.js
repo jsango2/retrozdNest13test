@@ -25,7 +25,7 @@ const Layout = ({ children, isMap }) => {
       {/* <Header siteTitle={`Title`} /> */}
 
       <HeaderWrap isMap={isMap}>
-        <HeaderBackground />
+        <HeaderBackground isMap={isMap} />
         <Container>
           <Link href="/">
             <WrapLogo isMap={isMap}>RETRO ZADAR</WrapLogo>

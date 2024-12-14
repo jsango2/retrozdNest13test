@@ -15,10 +15,11 @@ export const HeaderWrap = styled.div`
   width: 100%;
   height: 100px;
   /* background-color: #f8efe3; */
-  border-bottom: 1px solid #80808036;
+  border-bottom: ${(props) => (props.isMap ? "unset" : "1px solid #80808036")};
+
   /* opacity: 0.18; */
   z-index: 2;
-  background-color: #f8efe3;
+  background-color: ${(props) => (props.isMap ? "unset" : "#f8efe3")};
 
   /* background: repeat center url("/1540.jpg"); */
   @media only screen and (max-width: 1250px) {
@@ -38,10 +39,12 @@ export const HeaderBackground = styled.div`
   z-index: 1;
   background: repeat center url("/1540.jpg");
   top: 0;
+  display: ${(props) => (props.isMap ? "none" : "block")};
+
   @media only screen and (max-width: 1250px) {
   }
   @media only screen and (max-width: 750px) {
-    height: ${(props) => (props.isMap ? "60px" : "70px")};
+    height: ${(props) => (props.isMap ? "60px" : "100%")};
   }
 `;
 export const Container = styled.div`
