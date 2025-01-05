@@ -28,7 +28,7 @@ const Wrap = styled.div`
 `;
 const WrapText = styled.div`
   position: relative;
-  height: 620px;
+  height: 710px;
   width: 530px;
   display: flex;
   justify-content: center;
@@ -201,6 +201,7 @@ const Insta = styled.div`
 `;
 
 const Mapa = styled.div`
+  text-transform: uppercase;
   position: relative;
   margin-top: 30px;
   width: auto;
@@ -347,6 +348,11 @@ export default function IndexPage() {
             nadi kako će nas upravo ove stare fotografije Zadra potaknuti na
             promišljanje o njegovoj budućnosti.
             <div style={{ height: "10px" }}></div>
+            Sekcija 'Priče o Zadru' posebno oživljava svakodnevicu prošlih
+            generacija, donoseći dragocjene detalje iz života nekadašnjih
+            stanovnika te objašnjavajući promjene u vizurama grada kroz
+            povijest.
+            <div style={{ height: "10px" }}></div>
             Projekt nije i nikada neće imati komercijalni karakter. Ovo je
             poklon svim Zadrankama i Zadranima koji ovaj grad žive! Kod svih
             objavljenih povijesnih fotografija navedeno je ime autora gdje god
@@ -364,7 +370,7 @@ export default function IndexPage() {
               <Mapa>OTKRIJTE ZADAR NA MAPI</Mapa>
             </Link>
             <Link href="/blog">
-              <Mapa>BLOG</Mapa>
+              <Mapa>Priče o Zadru</Mapa>
             </Link>
           </WrapLinks>
         </WrapText>

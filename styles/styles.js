@@ -291,9 +291,9 @@ export const WrapAuthorDate = styled.div`
 `;
 export const Text = styled.div`
   position: relative;
-
+  font-family: "Times New Roman", Times, serif;
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   max-width: 600px;
   margin: 0 auto 60px auto;

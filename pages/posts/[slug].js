@@ -271,7 +271,7 @@ function BlogPost({ post, all_posts }) {
       setCopySuccess(false);
     }, 1200);
   };
-
+  console.log(post);
   return (
     <>
       <Head>

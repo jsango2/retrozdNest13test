@@ -97,6 +97,10 @@ export const WrapData = styled.div`
   align-items: flex-start;
   padding-top: 20px;
   padding-left: 20px;
+  font-family: "Times New Roman", Times, serif;
+  h2 {
+    font-size: 32px;
+  }
   @media only screen and (max-width: 750px) {
     width: 100%;
 
@@ -106,6 +110,9 @@ export const WrapData = styled.div`
   }
   @media only screen and (max-width: 550px) {
     padding-top: 0px;
+    h2 {
+      font-size: 26px;
+    }
   }
 `;
 export const Container = styled.div`
