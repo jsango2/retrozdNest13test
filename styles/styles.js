@@ -353,6 +353,7 @@ export const BlogBackground = styled.div`
   top: 0;
   left: 0;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
   opacity: 0.12;
   background-color: #f8efe3;
